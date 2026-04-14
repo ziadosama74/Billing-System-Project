@@ -1,12 +1,10 @@
 # Billing-System-Project
 <h3>Billing System Project Flow</h3>
 <img width="1472" height="735" alt="image" src="https://github.com/user-attachments/assets/c48ae2f9-0d12-4d3c-9729-2c34ba91d8c8" />
-# 📊 Billing System Database Design
+<h3>📊 Billing System Database Design</h3>
 
 ## 🏗️ Overview
-
 This database design represents a telecom billing system that processes CDR (Call Detail Records), applies rating based on subscriber plans, and generates invoices.
-
 ---
 
 ## 👤 Subscribers
@@ -138,13 +136,3 @@ This database design represents a telecom billing system that processes CDR (Cal
 7. Data is aggregated into `Invoices`
 8. Details are stored in `Invoice_Items`
 
----
-
-## 🚀 Features
-
-* Dynamic pricing per plan
-* Support for prepaid & postpaid systems
-* Scalable design for large datasets
-* Clean and normalized database structure
-
----
