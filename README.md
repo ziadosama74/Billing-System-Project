@@ -121,6 +121,7 @@ This database design represents a telecom billing system that processes CDR (Cal
 | Invoices    | Invoice_Items | 1 : N        |
 | CDRs        | Invoice_Items | 1 : N        |
 
+<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVGiFY7hE=/?embedMode=view_only_without_ui&moveToViewport=-242,-250,1882,1624&embedId=51630247243" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
 ---
 
 ## ⚙️ System Flow
