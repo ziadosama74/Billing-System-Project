@@ -1,0 +1,379 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.ITITelcome.javase:CDR_Rating_Process >--------------
+[INFO] Building CDR_Rating_Process 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ CDR_Rating_Process ---
+[INFO] Deleting /home/zosama/Billing-System-Project/CDR_Rating_Process/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ CDR_Rating_Process ---
+[INFO] skip non existing resourceDirectory /home/zosama/Billing-System-Project/CDR_Rating_Process/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ CDR_Rating_Process ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 4 source files with javac [debug release 25] to target/classes
+[INFO] 
+[INFO] --- exec:3.6.3:java (default-cli) @ CDR_Rating_Process ---
+Connected to Parsing Server
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+Received: START_RATING|files=1
+Files Count: files=1
+Rating Process Started 🔥
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  03:56 min
+[INFO] Finished at: 2026-04-14T06:12:19+02:00
+[INFO] ------------------------------------------------------------------------

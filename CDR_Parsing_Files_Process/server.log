@@ -1,0 +1,263 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------< com.ITITelcome.javase:CDR_Parsing_Files_Process >-----------
+[INFO] Building CDR_Parsing_Files_Process 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ CDR_Parsing_Files_Process ---
+[INFO] Deleting /home/zosama/Billing-System-Project/CDR_Parsing_Files_Process/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ CDR_Parsing_Files_Process ---
+[INFO] skip non existing resourceDirectory /home/zosama/Billing-System-Project/CDR_Parsing_Files_Process/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ CDR_Parsing_Files_Process ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 4 source files with javac [debug release 25] to target/classes
+[INFO] 
+[INFO] --- exec:3.6.3:java (default-cli) @ CDR_Parsing_Files_Process ---
+====================================
+CDR Parsing Files Process Is Working
+====================================
+No Files Yet !!
+Client not connected yet
+Server started... Waiting for client...
+No Files Yet !!
+Client not connected yet
+Client connected!
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
+No Files Yet !!
+Flag sent to Rating Process
