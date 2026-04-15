@@ -142,7 +142,10 @@ public class CDR_Raw_Data {
                         System.err.println("Invalid record: " + line);
                         continue;
                     }
-
+                    for (int i = 0; i < fields.length; i++) {
+                        fields[i] = fields[i].replace("\"", "").trim();
+                    }
+                    
                     CDR_Raw_Data cdr = new CDR_Raw_Data();
                     
                     cdr.setCDR_Raw_Data_Caller(fields[0].trim());

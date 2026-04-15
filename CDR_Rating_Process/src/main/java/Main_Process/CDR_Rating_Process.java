@@ -3,6 +3,7 @@ package Main_Process;
 import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
 public class CDR_Rating_Process {
 
@@ -10,31 +11,32 @@ public class CDR_Rating_Process {
 
         try {
             Socket socket = new Socket("localhost", 5000);
+            System.out.println("════════════════════════════════════════════════");
+            System.out.println("💰 Rating Engine is Running ⚙️");
+            System.out.println("════════════════════════════════════════════════");
+            System.out.println("[⚙️💰 RATING ] :  Connected To Parsing Process Server Successfully ✅");
 
-            System.out.println("Connected to Parsing Server");
-
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(socket.getInputStream()));
-
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             while (true) {
 
                 String message = in.readLine();
 
                 if (message == null) {
+                    System.out.println("[⚙️💰 RATING ] : Connection closed by Parsing Process ❌🔌");
                     break;
                 }
 
-                if (message.startsWith("START_RATING")) {
+                if (message.equals("START_RATING")) 
+                {
 
-                    System.out.println("Received: " + message);
-
-                    String[] parts = message.split("\\|");
-
-                    if (parts.length > 1) {
-                        System.out.println("Files Count: " + parts[1]);
-                    }
-
+                    System.out.println("════════════════════════════════════════════════");
+                    System.out.println("[⚙️💰 RATING ] : Starting Rating Money ... 💰📞");  
+                    System.out.println("════════════════════════════════════════════════");
+                    
                     startRating();
+                    out.println("RATING_DONE");
+                    System.out.println("[⚙️💰 RATING ] : Sent Done Flag To Parsing ✔️📤");
                 }
             }
 
@@ -44,7 +46,6 @@ public class CDR_Rating_Process {
     }
 
     public static void startRating() {
-        System.out.println("Rating Process Started 🔥");
-        // put your rating logic here
+        System.out.println("[⚙️💰 RATING ] : Rating Process In Prograss ⚙️ 💰⏳");
     }
 }

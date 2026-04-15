@@ -20,7 +20,7 @@ public class BillingDB
         } 
         catch (SQLException e) 
         {
-            System.out.println("❌ Connection failed!");
+            System.out.println("❌Connection failed!");
             e.printStackTrace();
         }
         return conn;

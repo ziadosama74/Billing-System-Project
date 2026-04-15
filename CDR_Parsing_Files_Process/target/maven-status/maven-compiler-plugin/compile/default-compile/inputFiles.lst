@@ -2,3 +2,4 @@
 /home/zosama/Billing-System-Project/CDR_Parsing_Files_Process/src/main/java/CDR_PK/CDR_Raw_Data.java
 /home/zosama/Billing-System-Project/CDR_Parsing_Files_Process/src/main/java/DB/BillingDB.java
 /home/zosama/Billing-System-Project/CDR_Parsing_Files_Process/src/main/java/Main_Process/CDR_Parsing_Files_Process.java
+/home/zosama/Billing-System-Project/CDR_Parsing_Files_Process/src/main/java/Network/CDR_Parsing_Network.java
