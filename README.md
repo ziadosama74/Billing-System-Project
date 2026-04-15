@@ -123,16 +123,5 @@ This database design represents a telecom billing system that processes CDR (Cal
 | CDRs        | Invoice_Items | 1 : N        |
 ---
 
-## ⚙️ System Flow
 
-1. CDR files are received and stored in `CDR_Files`
-2. Records are parsed into `CDRs`
-3. Subscriber is identified using MSISDN
-4. Plan is retrieved from `Subscribers`
-5. Rate is fetched from `Rates` using:
-
-   * PlanID + ServiceType
-6. Cost is calculated and stored in `Rated_CDRs`
-7. Data is aggregated into `Invoices`
-8. Details are stored in `Invoice_Items`
 
