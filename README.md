@@ -9,14 +9,16 @@ This database design represents a telecom billing system that processes CDR (Cal
 
 ## 👤 Subscribers
 
-| Column Name                | Data Type | Description               |
-| -------------------------- | --------- | ------------------------- |
-| SubscriberID (PK)          | INT       | Unique subscriber ID      |
-| MSISDN (UNIQUE)            | VARCHAR   | Mobile number             |
-| Name                       | VARCHAR   | Subscriber name           |
-| PlanID (FK → Plans.PlanID) | INT       | Assigned plan             |
-| CreatedAt                  | DATETIME  | Creation date             |
-| IsDeleted                  | BOOLEAN   | Soft delete flag          |
+| Column Name                | Data Type | Description            |
+| -------------------------- | --------- | ---------------------- |
+| SubscriberID (PK)          | INT       | Unique subscriber ID   |
+| MSISDN (UNIQUE)            | VARCHAR   | Mobile number          |
+| Name                       | VARCHAR   | Subscriber name        |
+| InternationalID (UNIQUE)   | VARCHAR   | National ID / Passport |
+| Address                    | VARCHAR   | Subscriber address     |
+| PlanID (FK → Plans.PlanID) | INT       | Assigned plan          |
+| CreatedAt                  | DATETIME  | Creation date          |
+| IsDeleted                  | BOOLEAN   | Soft delete flag       |
 
 ---
 
