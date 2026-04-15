@@ -16,7 +16,6 @@ This database design represents a telecom billing system that processes CDR (Cal
 | Name                       | VARCHAR   | Subscriber name           |
 | PlanID (FK → Plans.PlanID) | INT       | Assigned plan             |
 | Balance                    | DECIMAL   | Current balance (prepaid) |
-| Status                     | VARCHAR   | ACTIVE / INACTIVE         |
 | CreatedAt                  | DATETIME  | Creation date             |
 | IsDeleted                  | BOOLEAN   | Soft delete flag          |
 
