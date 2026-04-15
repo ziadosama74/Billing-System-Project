@@ -1,12 +1,28 @@
-# Billing-System-Project
-<h2>Billing System Project Flow</h2>
-<img width="1472" height="735" alt="image" src="https://github.com/user-attachments/assets/c48ae2f9-0d12-4d3c-9729-2c34ba91d8c8" />
-<h2>📊 Billing System Database Design</h2>
+# 🚀 Billing-System-Project
+
+---
+
+## 🔄 Billing System Project Flow
+
+<p align="center">
+  <img width="90%" src="https://github.com/user-attachments/assets/c48ae2f9-0d12-4d3c-9729-2c34ba91d8c8" />
+</p>
+<p align="center">
+  <img width="90%" alt="Draw" src="https://github.com/user-attachments/assets/aadf2410-d90e-42a8-926a-666c091445a9" />
+</p>
+
+---
+
+## 🗄️ Billing System Database Design
 
 ## 🏗️ Overview
 This database design represents a telecom billing system that processes CDR (Call Detail Records), applies rating based on subscriber plans, and generates invoices.
+
+<p align="center">
+  <img width="60%" src="https://github.com/user-attachments/assets/acd737d3-6045-4528-8d1c-fa8fe3d99510" />
+</p>
+
 ---
-<img width="938" height="1032" alt="ERD" src="https://github.com/user-attachments/assets/acd737d3-6045-4528-8d1c-fa8fe3d99510" />
 
 ## 👤 Subscribers
 
@@ -121,7 +137,63 @@ This database design represents a telecom billing system that processes CDR (Cal
 | CDRs        | Rated_CDRs    | 1 : 1        |
 | Invoices    | Invoice_Items | 1 : N        |
 | CDRs        | Invoice_Items | 1 : N        |
+
 ---
 
+## ✨ Project Features
 
+### 📂 CDR Parsing Engine
+- 📥 Automatically detects and loads incoming **CDR CSV files**
+- 🔍 Parses call records (Caller, Called, Duration, Service Type, etc.)
+- ⚙️ Processes records efficiently with validation
+- 📦 Moves processed files to backup directory
 
+---
+
+### 💰 Rating & Charging Engine
+- 📡 Receives trigger from parsing process
+- ⚙️💰 Calculates charges based on service type (VOICE, SMS, DATA)
+- 📊 Prepares records for billing
+- ✅ Ensures accurate and consistent rating
+
+---
+
+### 🔗 Real-Time Communication
+- 🌐 Socket-based communication between **Parsing** and **Rating**
+- 📤 Sends `START_RATING` signal after file processing
+- 📥 Waits for `RATING_DONE` acknowledgment
+- 🔄 Ensures synchronized workflow between components
+
+---
+
+### 🗄️ Database Integration
+- 🧩 Uses **PostgreSQL** for storing CDR data
+- ⚡ Optimized insertion using stored procedures
+- 🔐 Ensures data consistency and integrity
+
+---
+
+### 🖥️ System Automation
+- 🔁 Continuously monitors directory for new files
+- ⏳ Handles empty states gracefully
+- 🚀 Fully automated pipeline (Parsing → Rating → Backup)
+
+<p align="center">
+  <img width="85%" src="https://github.com/user-attachments/assets/ba7261c5-da22-4816-a601-728d26875bcc" />
+</p>
+
+---
+
+### 🎛️ Clean Logging System
+- 📊 Structured logs with levels: `[PARSING]`, `[RATING]`, `[NETWORK]`
+- 🎨 Colored console output for better readability
+- 🧠 Easy debugging and monitoring
+
+---
+
+### ⚡ Scalable Architecture
+- 🧱 Modular design (Parsing, Rating, Network layers)
+- 🔌 Easy to extend (Billing, Invoicing, Web UI)
+- 🚀 Ready for real-world telecom system simulation
+
+---
