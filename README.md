@@ -1,12 +1,25 @@
-# Billing-System-Project
-<h2>Billing System Project Flow</h2>
-<img width="1472" height="735" alt="image" src="https://github.com/user-attachments/assets/c48ae2f9-0d12-4d3c-9729-2c34ba91d8c8" />
-<h2>📊 Billing System Database Design</h2>
+# 🚀 Billing-System-Project
+
+---
+
+## 🔄 Billing System Project Flow
+
+<p align="center">
+  <img width="90%" src="https://github.com/user-attachments/assets/c48ae2f9-0d12-4d3c-9729-2c34ba91d8c8" />
+</p>
+
+---
+
+## 📊 Billing System Database Design
 
 ## 🏗️ Overview
 This database design represents a telecom billing system that processes CDR (Call Detail Records), applies rating based on subscriber plans, and generates invoices.
+
+<p align="center">
+  <img width="60%" src="https://github.com/user-attachments/assets/acd737d3-6045-4528-8d1c-fa8fe3d99510" />
+</p>
+
 ---
-<img width="938" height="1032" alt="ERD" src="https://github.com/user-attachments/assets/acd737d3-6045-4528-8d1c-fa8fe3d99510" />
 
 ## 👤 Subscribers
 
@@ -121,7 +134,9 @@ This database design represents a telecom billing system that processes CDR (Cal
 | CDRs        | Rated_CDRs    | 1 : 1        |
 | Invoices    | Invoice_Items | 1 : N        |
 | CDRs        | Invoice_Items | 1 : N        |
+
 ---
+
 ## ✨ Project Features
 
 ### 📂 CDR Parsing Engine
@@ -159,7 +174,11 @@ This database design represents a telecom billing system that processes CDR (Cal
 - 🔁 Continuously monitors directory for new files
 - ⏳ Handles empty states gracefully
 - 🚀 Fully automated pipeline (Parsing → Rating → Backup)
-<img width="1920" height="1080" alt="Screenshot from 2026-04-15 12-18-59" src="https://github.com/user-attachments/assets/ba7261c5-da22-4816-a601-728d26875bcc" />
+
+<p align="center">
+  <img width="85%" src="https://github.com/user-attachments/assets/ba7261c5-da22-4816-a601-728d26875bcc" />
+</p>
+
 ---
 
 ### 🎛️ Clean Logging System
@@ -175,4 +194,3 @@ This database design represents a telecom billing system that processes CDR (Cal
 - 🚀 Ready for real-world telecom system simulation
 
 ---
-
