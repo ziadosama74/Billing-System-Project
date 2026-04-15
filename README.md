@@ -7,7 +7,9 @@
 <p align="center">
   <img width="90%" src="https://github.com/user-attachments/assets/c48ae2f9-0d12-4d3c-9729-2c34ba91d8c8" />
 </p>
-<img width="90%" alt="Draw" src="https://github.com/user-attachments/assets/74a09e96-c286-4c18-a624-ab85f7afdedc" />
+<p align="center">
+  <img width="90%" alt="Draw" src="https://github.com/user-attachments/assets/aadf2410-d90e-42a8-926a-666c091445a9" />
+</p>
 
 ---
 
