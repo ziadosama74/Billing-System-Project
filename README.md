@@ -6,6 +6,7 @@
 ## 🏗️ Overview
 This database design represents a telecom billing system that processes CDR (Call Detail Records), applies rating based on subscriber plans, and generates invoices.
 ---
+<img width="938" height="1032" alt="ERD" src="https://github.com/user-attachments/assets/acd737d3-6045-4528-8d1c-fa8fe3d99510" />
 
 ## 👤 Subscribers
 
@@ -121,7 +122,6 @@ This database design represents a telecom billing system that processes CDR (Cal
 | Invoices    | Invoice_Items | 1 : N        |
 | CDRs        | Invoice_Items | 1 : N        |
 ---
-<img width="954" height="1008" alt="ERD" src="https://github.com/user-attachments/assets/4e10fb9f-d578-4f0b-b69c-dab9e0ec6a9b" />
 
 ## ⚙️ System Flow
 
