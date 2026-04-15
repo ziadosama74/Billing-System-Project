@@ -119,7 +119,7 @@ This database design represents a telecom billing system that processes CDR (Cal
 | Invoices    | Invoice_Items | 1 : N        |
 | CDRs        | Invoice_Items | 1 : N        |
 ---
-<img width="829" height="698" alt="image" src="https://github.com/user-attachments/assets/443dbc5f-6869-4a86-a934-8608014fc06c" />
+<img width="954" height="1008" alt="ERD" src="https://github.com/user-attachments/assets/4e10fb9f-d578-4f0b-b69c-dab9e0ec6a9b" />
 
 ## ⚙️ System Flow
 
