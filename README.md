@@ -10,7 +10,7 @@
 
 ---
 
-## 📊 Billing System Database Design
+## 🗄️ Billing System Database Design
 
 ## 🏗️ Overview
 This database design represents a telecom billing system that processes CDR (Call Detail Records), applies rating based on subscriber plans, and generates invoices.
