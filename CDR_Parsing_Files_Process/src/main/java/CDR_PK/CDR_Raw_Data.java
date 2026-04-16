@@ -12,36 +12,18 @@ import java.sql.Timestamp;
 public class CDR_Raw_Data {
 
     // ================== Attributes ==================
-    // Unique ID for each CDR record
     private int CDR_Raw_Data_CDRID;
-
-    // Caller number
     private String CDR_Raw_Data_Caller;
-
-    // Called number
     private String CDR_Raw_Data_Called;
-
-    // Call start time
     private LocalDateTime CDR_Raw_Data_StartTime;
-
-    // Call duration in seconds
     private int CDR_Raw_Data_Duration;
-
-    // Type of service (VOICE, SMS, DATA)
     private String CDR_Raw_Data_ServiceType;
-
-    // Related file ID
     private int CDR_Raw_Data_FileID;
-
-    // Status of record (NEW, PROCESSED, FAILED)
     private String CDR_Raw_Data_Status;
 
     // ================== Constructors ==================
-    // Default constructor
-    public CDR_Raw_Data() {
-    }
-
-    // Full constructor
+    public CDR_Raw_Data() {}
+    
     public CDR_Raw_Data(int CDRID, String Caller, String Called, LocalDateTime StartTime,
             int Duration, String ServiceType, int FileID, String Status) {
         this.CDR_Raw_Data_CDRID = CDRID;
@@ -147,7 +129,6 @@ public class CDR_Raw_Data {
                     }
                     
                     CDR_Raw_Data cdr = new CDR_Raw_Data();
-                    
                     cdr.setCDR_Raw_Data_Caller(fields[0].trim());
                     cdr.setCDR_Raw_Data_Called(fields[1].trim());
                     cdr.setCDR_Raw_Data_StartTime(LocalDateTime.parse(fields[2].trim()));
@@ -173,8 +154,8 @@ public class CDR_Raw_Data {
     }
     // ================== insert CDR record filed ==================
 
-    public static void insertCDRRecordFiled(CDR_Raw_Data record) {
-
+    public static void insertCDRRecordFiled(CDR_Raw_Data record) 
+    {
         String sql = "SELECT insert_cdr(?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = BillingDB.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -186,10 +167,11 @@ public class CDR_Raw_Data {
             stmt.setString(5, record.getCDR_Raw_Data_ServiceType());
             stmt.setInt(6, record.getCDR_Raw_Data_FileID());
             stmt.setString(7, record.getCDR_Raw_Data_Status());
-
             stmt.execute();
             con.close();
-        } catch (Exception e) {
+        } 
+        catch (Exception e) 
+        {
             System.err.println("Error inserting CDR: " + e.getMessage());
         }
     }
