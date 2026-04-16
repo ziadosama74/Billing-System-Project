@@ -19,7 +19,8 @@ public class CDR_Rating_Process {
 
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            while (true) {
+            while (true) 
+            {
                 String message = in.readLine();
 
                 if (message == null) {
@@ -42,8 +43,10 @@ public class CDR_Rating_Process {
                 }
             }
 
-        } catch (Exception e) {
-            System.out.println("Cannot connect to server. Make sure Parsing is running.");
+        } 
+        catch (Exception e) 
+        {
+            System.out.println("Cannot connect to Parsing");
         }
     }
 }
