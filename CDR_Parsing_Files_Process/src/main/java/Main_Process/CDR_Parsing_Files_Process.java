@@ -11,9 +11,8 @@ public class CDR_Parsing_Files_Process {
     
     static CDR_Parsing_Network network = new CDR_Parsing_Network();
     
-    public static void main(String[] args) throws InterruptedException {
-        
-        // start server once
+    public static void main(String[] args) throws InterruptedException 
+    {
         network.startServer();
 
         String home = System.getProperty("user.home");
@@ -29,7 +28,8 @@ public class CDR_Parsing_Files_Process {
         System.out.println("📂 CDR Parsing Files Process is Running ⚙️");
         System.out.println("══════════════════════════════════════════════════════════════════════════════");
         int FN = 0;
-        while (true) {
+        while (true) 
+        {
 
             File[] CDR_Files_CSV = CDR_Loader_Files_Directory.listFiles((dir, name) -> name.endsWith(".csv"));
 
