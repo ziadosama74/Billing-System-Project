@@ -8,28 +8,16 @@ import java.sql.ResultSet;
 
 public class CDR_File {
     // ================== Attributes ==================
-
-    // Unique ID for each CDR file
     private int CDR_File_ID;
-
-    // Name of the file (e.g., file1.csv)
     private String CDR_File_Name;
-
-    // Time when file is received
     private LocalDateTime CDR_File_ReceivedAt;
-
-    // Time when file is processed
     private LocalDateTime CDR_File_ProcessedAt;
-
-    // Status of file (RECEIVED, PROCESSING, PROCESSED, FAILED)
     private String CDR_File_Status;
-
+    
     // ================== Constructors ==================
-    // Default constructor
     public CDR_File() {
     }
-
-    // Constructor with basic info
+    
     public CDR_File(String CDR_File_Name) {
         this.CDR_File_Name = CDR_File_Name;
     }
@@ -75,8 +63,8 @@ public class CDR_File {
     // ================== Methods ==================
     public int CDR_File_Insert_Recived_File(String filename) {
         int fileId = -1;
-        try {
-            // Calling function
+        try 
+        {
             Connection con = (Connection) BillingDB.getConnection();
             String sql = "SELECT insert_cdr_file(?)";
             PreparedStatement stmt = con.prepareStatement(sql);
