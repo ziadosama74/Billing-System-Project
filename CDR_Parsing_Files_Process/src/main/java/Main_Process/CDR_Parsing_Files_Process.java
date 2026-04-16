@@ -25,9 +25,9 @@ public class CDR_Parsing_Files_Process {
             System.exit(0);
         }
 
-        System.out.println("════════════════════════════════════════════════");
+        System.out.println("══════════════════════════════════════════════════════════════════════════════");
         System.out.println("📂 CDR Parsing Files Process is Running ⚙️");
-        System.out.println("════════════════════════════════════════════════");
+        System.out.println("══════════════════════════════════════════════════════════════════════════════");
         int FN = 0;
         while (true) {
 
@@ -47,9 +47,9 @@ public class CDR_Parsing_Files_Process {
 
                 int FileID = CDR_File_Info.CDR_File_Insert_Recived_File(CDR_File_Info.getCDR_File_Name());
 
-                System.out.println("════════════════════════════════════════════════");
-                System.out.println("[📂⚙️ PARSING] : 📂 Loading CDR File → " + FN + " 📊⚡");
-                System.out.println("════════════════════════════════════════════════");
+                System.out.println("══════════════════════════════════════════════════════════════════════════════");
+                System.out.println("[📂⚙️ PARSING] : 📂 Loading CDR File → " + FN + " 📊⚡ Actual File ID : ("+ FileID +")");
+                System.out.println("══════════════════════════════════════════════════════════════════════════════");
 
                 List<CDR_Raw_Data> records = CDR_Raw_Data.readCSV(cdr_csv_file, FileID);
 
@@ -62,15 +62,14 @@ public class CDR_Parsing_Files_Process {
                     System.out.println("[📂⚙️ PARSING] : ⚡ Processing CDR Record (" + RN + ") 📄");
                 }
 
-                System.out.println("════════════════════════════════════════════════");
+                System.out.println("══════════════════════════════════════════════════════════════════════════════");
                 System.out.println("[📂⚙️ PARSING] : ✅ Finished Loading File (" + FN + ") 📂");
-                System.out.println("════════════════════════════════════════════════");
+                System.out.println("══════════════════════════════════════════════════════════════════════════════");
                 
-                network.sendFlagToRating();
+                network.sendFlagToRating(FileID);
                 network.moveToBackup(cdr_csv_file);
                 network.waitForRatingResponse();
             }
-            TimeUnit.SECONDS.sleep(2);
         }
     }
 }

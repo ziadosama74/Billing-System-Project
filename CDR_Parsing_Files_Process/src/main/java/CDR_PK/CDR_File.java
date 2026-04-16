@@ -88,7 +88,7 @@ public class CDR_File {
             if (rs.next()) {
                 fileId = rs.getInt(1);
             }
-
+            con.close();
         } catch (Exception e) {
 
             e.printStackTrace();

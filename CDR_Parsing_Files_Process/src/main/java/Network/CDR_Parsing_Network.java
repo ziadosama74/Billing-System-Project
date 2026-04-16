@@ -31,12 +31,12 @@ public class CDR_Parsing_Network {
     }
 
     // ================= SEND FLAG =================
-    public void sendFlagToRating() {
+    public void sendFlagToRating(int FileID) {
         try {
             if (clientSocket != null && !clientSocket.isClosed()) {
 
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-                out.println("START_RATING");
+                out.println("START_RATING:"+FileID);
 
                 System.out.println("[📂⚙️ PARSING] : Flag sent to Rating Process ✔️📤");
 
@@ -44,7 +44,9 @@ public class CDR_Parsing_Network {
                 System.out.println("[⚙️💰 RATING ] : Rating Process Not Connected Yet ⏳⚠️❌");
             }
 
-        } catch (Exception e) {
+        } 
+        catch (Exception e) 
+        {
             e.printStackTrace();
         }
     }

@@ -188,7 +188,7 @@ public class CDR_Raw_Data {
             stmt.setString(7, record.getCDR_Raw_Data_Status());
 
             stmt.execute();
-
+            con.close();
         } catch (Exception e) {
             System.err.println("Error inserting CDR: " + e.getMessage());
         }
