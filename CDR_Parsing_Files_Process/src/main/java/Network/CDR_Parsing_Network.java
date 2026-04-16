@@ -16,7 +16,8 @@ public class CDR_Parsing_Network {
     private Socket clientSocket = null;
 
     // ================= SERVER =================
-    public void startServer() {
+    public void startServer() 
+    {
         new Thread(() -> {
             try (ServerSocket serverSocket = new ServerSocket(5000)) 
             {
@@ -32,7 +33,8 @@ public class CDR_Parsing_Network {
     }
 
     // ================= SEND FLAG =================
-    public void sendFlagToRating(int FileID) {
+    public void sendFlagToRating(int FileID) 
+    {
         try 
         {
             if (clientSocket != null && !clientSocket.isClosed()) 
