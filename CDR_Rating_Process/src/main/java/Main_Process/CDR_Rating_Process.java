@@ -20,7 +20,6 @@ public class CDR_Rating_Process {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             while (true) {
-
                 String message = in.readLine();
 
                 if (message == null) {
