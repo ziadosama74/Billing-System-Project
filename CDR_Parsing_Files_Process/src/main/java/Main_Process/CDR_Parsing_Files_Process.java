@@ -13,7 +13,7 @@ public class CDR_Parsing_Files_Process {
     
     public static void main(String[] args) throws InterruptedException 
     {
-        network.startServer();
+        network.StartServer();
 
         String home = System.getProperty("user.home");
         String CDR_Loader_Path = home + "/Billing-System-Project/CDR_Loader_Files/";
@@ -51,14 +51,14 @@ public class CDR_Parsing_Files_Process {
                 System.out.println("[📂⚙️ PARSING] : 📂 Loading CDR File → " + FN + " 📊⚡ Actual File ID : ("+ FileID +")");
                 System.out.println("══════════════════════════════════════════════════════════════════════════════");
 
-                List<CDR_Raw_Data> records = CDR_Raw_Data.readCSV(cdr_csv_file, FileID);
+                List<CDR_Raw_Data> records = CDR_Raw_Data.ReadCSV(cdr_csv_file, FileID);
 
                 int RN = 0;
 
                 for (CDR_Raw_Data record : records) 
                 {
                     RN++;
-                    record.insertCDRRecordFiled(record);
+                    record.InsertCDRRecordFiled(record);
                     System.out.println("[📂⚙️ PARSING] : ⚡ Processing CDR Record (" + RN + ") 📄");
                 }
 
@@ -66,9 +66,9 @@ public class CDR_Parsing_Files_Process {
                 System.out.println("[📂⚙️ PARSING] : ✅ Finished Loading File (" + FN + ") 📂");
                 System.out.println("══════════════════════════════════════════════════════════════════════════════");
                 
-                network.sendFlagToRating(FileID);
-                network.moveToBackup(cdr_csv_file);
-                network.waitForRatingResponse();
+                network.SendFlagToRating(FileID);
+                network.MoveToBackup(cdr_csv_file);
+                network.WaitForRatingResponse();
             }
         }
     }

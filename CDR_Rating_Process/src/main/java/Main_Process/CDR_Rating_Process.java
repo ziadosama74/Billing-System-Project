@@ -15,7 +15,7 @@ public class CDR_Rating_Process {
             System.out.println("══════════════════════════════════════════════════════════════════════════════");
             System.out.println("💰 Rating Engine is Running ⚙️");
             System.out.println("══════════════════════════════════════════════════════════════════════════════");
-            System.out.println("[⚙️💰 RATING ] :  Connected To Parsing Process Server Successfully ✅");
+            System.out.println("[⚙️💰 RATING ] :  Connected To Parsing Process Successfully ✅");
 
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);

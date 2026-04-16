@@ -16,7 +16,7 @@ public class CDR_Parsing_Network {
     private Socket clientSocket = null;
 
     // ================= SERVER =================
-    public void startServer() 
+    public void StartServer() 
     {
         new Thread(() -> {
             try (ServerSocket serverSocket = new ServerSocket(5000)) 
@@ -33,7 +33,7 @@ public class CDR_Parsing_Network {
     }
 
     // ================= SEND FLAG =================
-    public void sendFlagToRating(int FileID) 
+    public void SendFlagToRating(int FileID) 
     {
         try 
         {
@@ -55,7 +55,7 @@ public class CDR_Parsing_Network {
     }
 
     // ================= Wating For Response =================
-    public void waitForRatingResponse() 
+    public void WaitForRatingResponse() 
     {
         try 
         {
@@ -76,7 +76,7 @@ public class CDR_Parsing_Network {
         }
     }
     // ================= MOVE FILE =================
-    public static void moveToBackup(File file) 
+    public static void MoveToBackup(File file) 
     {
         try 
         {

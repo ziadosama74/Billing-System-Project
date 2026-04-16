@@ -105,7 +105,7 @@ public class CDR_Raw_Data {
     // ================================================
 
     // ================== CSV Reader ==================
-    public static List<CDR_Raw_Data> readCSV(File file, int fileId) {
+    public static List<CDR_Raw_Data> ReadCSV(File file, int fileId) {
 
         List<CDR_Raw_Data> list = new ArrayList<>();
 
@@ -154,7 +154,7 @@ public class CDR_Raw_Data {
     }
     // ================== insert CDR record filed ==================
 
-    public static void insertCDRRecordFiled(CDR_Raw_Data record) 
+    public static void InsertCDRRecordFiled(CDR_Raw_Data record) 
     {
         String sql = "SELECT insert_cdr(?, ?, ?, ?, ?, ?, ?)";
 
