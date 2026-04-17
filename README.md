@@ -1,19 +1,3 @@
-# 🚀 Billing-System-Project
-
----
-
-## 🔄 Billing System Project Flow
-
-<p align="center">
-  <img width="90%" src="https://github.com/user-attachments/assets/c48ae2f9-0d12-4d3c-9729-2c34ba91d8c8" />
-</p>
-
-<p align="center">
-  <img width="90%" alt="Flow" src="https://github.com/user-attachments/assets/da2ac8e3-ae90-4a7a-b917-a595db69fc2e" />
-</p>
-
----
-
 # 📡 Postpaid Billing System
 
 ## 📌 Overview
@@ -348,6 +332,17 @@ Final Bill = 165 EGP
 
 ---
 
+## 🔄 Billing System Project Flow
+
+<p align="center">
+  <img width="90%" src="https://github.com/user-attachments/assets/c48ae2f9-0d12-4d3c-9729-2c34ba91d8c8" />
+</p>
+
+<p align="center">
+  <img width="90%" alt="Flow" src="https://github.com/user-attachments/assets/da2ac8e3-ae90-4a7a-b917-a595db69fc2e" />
+</p>
+
+---
 ## ⚡ Scalable Architecture
 
 * Modular design (Parsing, Rating, Network layers)
