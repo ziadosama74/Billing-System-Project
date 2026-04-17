@@ -1,8 +1,10 @@
 -- ============================================================
 -- Function: insert_cdr_file
--- Purpose: Insert new CDR file and return its ID
+-- Purpose : Insert a new CDR file into the system
+--           - Prevent duplicate filenames
+--           - Store file metadata
+--           - Return generated file ID
 -- ============================================================
-
 CREATE OR REPLACE FUNCTION public.insert_cdr_file(p_filename VARCHAR)
 RETURNS INT
 LANGUAGE plpgsql
@@ -10,14 +12,12 @@ AS $$
 DECLARE
     new_file_id INT;
 BEGIN
-    -- Check if file already exists
     IF EXISTS (
         SELECT 1 FROM cdr_files WHERE filename = p_filename
     ) THEN
         RAISE EXCEPTION 'File already exists: %', p_filename;
     END IF;
 
-    -- Insert new file
     INSERT INTO cdr_files (filename, receivedat, status)
     VALUES (p_filename, NOW(), 'RECEIVED')
     RETURNING fileid INTO new_file_id;
@@ -25,12 +25,12 @@ BEGIN
     RETURN new_file_id;
 END;
 $$;
-
 -- ============================================================
 -- Function: insert_cdr
--- Purpose: Insert a single CDR record into CDRs table
+-- Purpose : Insert a single Call Detail Record (CDR)
+--           - Stores raw usage data (VOICE / SMS / DATA)
+--           - Linked to a specific file
 -- ============================================================
-
 CREATE OR REPLACE FUNCTION public.insert_cdr(
     p_caller VARCHAR,
     p_called VARCHAR,
@@ -54,258 +54,206 @@ BEGIN
     );
 END;
 $$;
-
--- ===============================================================
+-- ============================================================
 -- Function: process_cdrs_and_generate_invoice
--- Purpose: Full Rating Engine (Bundles + Free + Paid + Contract)
--- ===============================================================
-
-CREATE OR REPLACE FUNCTION process_cdrs_and_generate_invoice(p_file_id INT)
-RETURNS VOID
+-- Purpose : Full billing pipeline processor
+--           - Reads NEW CDRs
+--           - Applies bundle logic (Main → Free → Paid)
+--           - Calculates actual vs charged cost
+--           - Updates subscriber usage
+--           - Generates invoices with monthly fee + overusage
+-- ============================================================
+CREATE OR REPLACE FUNCTION public.process_cdrs_and_generate_invoice(p_file_id integer)
+RETURNS void
 LANGUAGE plpgsql
 AS $$
 DECLARE
     rec RECORD;
 
-    v_rate DECIMAL;
-    v_cost DECIMAL := 0;
+    v_plan_id INT;
+    v_rate DECIMAL := 0;
+    v_units INT;
 
-    v_invoice_id INT;
-
-    v_included INT;
-    v_free INT;
+    v_bundle INT := 0;
+    v_free INT := 0;
     v_used INT := 0;
 
-    v_units INT;              -- usage units after conversion
     v_remaining INT;
 
-    v_contract_type VARCHAR;
+    v_from_bundle INT := 0;
+    v_from_free INT := 0;
+    v_from_paid INT := 0;
+
+    v_charged_cost DECIMAL := 0;
+    v_actual_cost DECIMAL := 0;
+
+    v_invoice_id INT;
+    v_cycle DATE;
+    v_monthly_fee DECIMAL := 0;
 BEGIN
 
--- =========================
--- Loop on CDRs
--- =========================
 FOR rec IN
-    SELECT c.*, s.subscriberid
+    SELECT c.*, s.subscriberid, s.planid
     FROM cdrs c
     JOIN subscribers s ON c.caller = s.msisdn
     WHERE c.fileid = p_file_id
       AND c.status = 'NEW'
 LOOP
 
-    -- =========================
-    -- Convert Units
-    -- =========================
+    v_cycle := date_trunc('month', rec.starttime)::date;
+    v_plan_id := rec.planid;
+
+    SELECT monthlyfee INTO v_monthly_fee
+    FROM plans
+    WHERE planid = v_plan_id;
+
     IF rec.servicetype = 'VOICE' THEN
-        v_units := CEIL(rec.duration / 60.0); -- seconds → minutes
+        v_units := CEIL(rec.duration / 60.0);
     ELSE
         v_units := rec.duration;
     END IF;
 
-    -- =========================
-    -- Get Plan Included Units
-    -- =========================
-    SELECT includedunits INTO v_included
-    FROM plan_allowances pa
-    JOIN subscriber_contracts sc ON sc.planid = pa.planid
-    WHERE sc.subscriberid = rec.subscriberid
-      AND pa.servicetype = rec.servicetype
-    LIMIT 1;
+    INSERT INTO subscriber_usage(subscriberid, servicetype, usedunits, billingcycle)
+    VALUES (rec.subscriberid, rec.servicetype, 0, v_cycle)
+    ON CONFLICT (subscriberid, servicetype, billingcycle)
+    DO UPDATE SET usedunits = subscriber_usage.usedunits
+    RETURNING usedunits INTO v_used;
 
-    -- =========================
-    -- Get Free Units
-    -- =========================
-    SELECT freeunits INTO v_free
-    FROM plan_free_units pf
-    JOIN subscriber_contracts sc ON sc.planid = pf.planid
-    WHERE sc.subscriberid = rec.subscriberid
-      AND pf.servicetype = rec.servicetype
-    LIMIT 1;
+    SELECT COALESCE(includedunits,0)
+    INTO v_bundle
+    FROM plan_allowances
+    WHERE planid = v_plan_id
+      AND servicetype = rec.servicetype;
 
-    -- =========================
-    -- Get Used Units (this month)
-    -- =========================
-    SELECT COALESCE(SUM(usedunits), 0) INTO v_used
-    FROM subscriber_usage
+    SELECT COALESCE(freeunits,0)
+    INTO v_free
+    FROM plan_free_units
+    WHERE planid = v_plan_id
+      AND servicetype = rec.servicetype;
+
+    v_remaining := (v_bundle + v_free) - v_used;
+
+    SELECT COALESCE(rateperunit,0)
+    INTO v_rate
+    FROM rates
+    WHERE servicetype = rec.servicetype;
+
+    v_from_bundle := LEAST(v_units, GREATEST(v_remaining,0));
+    v_units := v_units - v_from_bundle;
+    v_remaining := v_remaining - v_from_bundle;
+
+    v_from_free := LEAST(v_units, GREATEST(v_remaining,0));
+    v_units := v_units - v_from_free;
+    v_remaining := v_remaining - v_from_free;
+
+    v_from_paid := v_units;
+
+    v_charged_cost := v_from_paid * v_rate;
+
+    v_actual_cost :=
+        (v_from_bundle + v_from_free + v_from_paid) * v_rate;
+
+    UPDATE subscriber_usage
+    SET usedunits = usedunits + (v_from_bundle + v_from_free + v_from_paid)
     WHERE subscriberid = rec.subscriberid
       AND servicetype = rec.servicetype
-      AND date_trunc('month', billingcycle) = date_trunc('month', rec.starttime);
+      AND billingcycle = v_cycle;
 
-    -- =========================
-    -- Calculate Remaining
-    -- =========================
-    v_remaining := (v_included + v_free) - v_used;
-
-    -- =========================
-    -- Get Contract Type
-    -- =========================
-    SELECT ct.name INTO v_contract_type
-    FROM subscriber_contracts sc
-    JOIN contract_types ct ON ct.contracttypeid = sc.contracttypeid
-    WHERE sc.subscriberid = rec.subscriberid
-    LIMIT 1;
-
-    -- =========================
-    -- Pricing Logic
-    -- =========================
-    IF v_remaining >= v_units THEN
-        v_cost := 0;
-    ELSE
-        IF v_contract_type = 'LIMITED' THEN
-            -- block usage
-            UPDATE cdrs SET status = 'ERROR'
-            WHERE cdrid = rec.cdrid;
-            CONTINUE;
-        ELSE
-            -- Unlimited → charge extra
-            SELECT rateperunit INTO v_rate
-            FROM rates
-            WHERE servicetype = rec.servicetype;
-
-            v_cost := (v_units - GREATEST(v_remaining,0)) * v_rate;
-        END IF;
-    END IF;
-
-    -- =========================
-    -- Insert Usage
-    -- =========================
-    INSERT INTO subscriber_usage (
-        subscriberid, servicetype, usedunits, billingcycle
+    INSERT INTO rated_cdrs(
+        cdrid,
+        subscriberid,
+        actual_cost,
+        charged_cost,
+        ratedat
     )
     VALUES (
-        rec.subscriberid, rec.servicetype, v_units, rec.starttime
+        rec.cdrid,
+        rec.subscriberid,
+        v_actual_cost,
+        v_charged_cost,
+        NOW()
     );
 
-    -- =========================
-    -- Insert Rated CDR
-    -- =========================
-    INSERT INTO rated_cdrs (cdrid, subscriberid, cost, ratedat)
-    VALUES (rec.cdrid, rec.subscriberid, v_cost, NOW());
-
-    -- =========================
-    -- Invoice Handling
-    -- =========================
     SELECT invoiceid INTO v_invoice_id
     FROM invoices
     WHERE subscriberid = rec.subscriberid
-      AND date_trunc('month', startdate) = date_trunc('month', rec.starttime)
+      AND startdate = v_cycle
     LIMIT 1;
 
     IF v_invoice_id IS NULL THEN
-        INSERT INTO invoices (
-            subscriberid, totalamount, startdate, enddate, createdat, status
+        INSERT INTO invoices(
+            subscriberid,
+            totalamount,
+            startdate,
+            enddate,
+            createdat,
+            status
         )
         VALUES (
             rec.subscriberid,
-            0,
-            date_trunc('month', rec.starttime),
-            (date_trunc('month', rec.starttime) + interval '1 month - 1 day')::date,
+            v_monthly_fee,
+            v_cycle,
+            (v_cycle + INTERVAL '1 month - 1 day')::date,
             NOW(),
             'GENERATED'
         )
         RETURNING invoiceid INTO v_invoice_id;
     END IF;
 
-    -- =========================
-    -- Insert Invoice Item
-    -- =========================
-    INSERT INTO invoice_items (invoiceid, cdrid, cost)
-    VALUES (v_invoice_id, rec.cdrid, v_cost);
+    INSERT INTO invoice_items(invoiceid, cdrid, cost)
+    VALUES (v_invoice_id, rec.cdrid, v_charged_cost);
 
-    -- =========================
-    -- Update Invoice Total
-    -- =========================
     UPDATE invoices
-    SET totalamount = totalamount + v_cost
+    SET totalamount = totalamount + v_charged_cost
     WHERE invoiceid = v_invoice_id;
 
-    -- =========================
-    -- Update CDR Status
-    -- =========================
     UPDATE cdrs
     SET status = 'PROCESSED'
     WHERE cdrid = rec.cdrid;
 
 END LOOP;
 
--- =========================
--- Update File Status
--- =========================
 UPDATE cdr_files
 SET status = 'PROCESSED',
     processedat = NOW()
 WHERE fileid = p_file_id;
+
 END;
 $$;
-
--- ===============================================================
--- Function: create_subscriber_with_contract
--- Purpose: Add new subscriber with plan + contract
--- ===============================================================
-
-CREATE OR REPLACE FUNCTION create_subscriber_with_contract(
+-- ============================================================
+-- Function: create_subscriber
+-- Purpose : Create a new subscriber
+--           - Assign plan
+--           - Initialize usage for VOICE, SMS, DATA
+-- ============================================================
+CREATE OR REPLACE FUNCTION public.create_subscriber(
     p_msisdn VARCHAR,
     p_name VARCHAR,
     p_internationalid VARCHAR,
     p_address VARCHAR,
-    p_plan_id INT,
-    p_contract_type_name VARCHAR, -- LIMITED / UNLIMITED
-    p_start_date DATE,
-    p_end_date DATE DEFAULT NULL
+    p_plan_id INT
 )
 RETURNS INT
 LANGUAGE plpgsql
 AS $$
 DECLARE
     v_subscriber_id INT;
-    v_contract_type_id INT;
 BEGIN
 
-    -- =========================
-    -- 1. Insert Subscriber
-    -- =========================
     INSERT INTO subscribers (
-        msisdn, name, internationalid, address
+        msisdn, name, internationalid, address, planid
     )
     VALUES (
-        p_msisdn, p_name, p_internationalid, p_address
+        p_msisdn, p_name, p_internationalid, p_address, p_plan_id
     )
     RETURNING subscriberid INTO v_subscriber_id;
 
-    -- =========================
-    -- 2. Get Contract Type ID
-    -- =========================
-    SELECT contracttypeid INTO v_contract_type_id
-    FROM contract_types
-    WHERE LOWER(name) = LOWER(p_contract_type_name)
-    LIMIT 1;
-
-    IF v_contract_type_id IS NULL THEN
-        RAISE EXCEPTION 'Invalid contract type: %', p_contract_type_name;
-    END IF;
-
-    -- =========================
-    -- 3. Insert Contract
-    -- =========================
-    INSERT INTO subscriber_contracts (
-        subscriberid, planid, contracttypeid, startdate, enddate
-    )
-    VALUES (
-        v_subscriber_id, p_plan_id, v_contract_type_id, p_start_date, p_end_date
-    );
-
-    -- =========================
-    -- 4. Initialize Usage (optional but recommended)
-    -- =========================
     INSERT INTO subscriber_usage (subscriberid, servicetype, usedunits, billingcycle)
     VALUES
-        (v_subscriber_id, 'VOICE', 0, p_start_date),
-        (v_subscriber_id, 'SMS',   0, p_start_date),
-        (v_subscriber_id, 'DATA',  0, p_start_date);
+        (v_subscriber_id, 'VOICE', 0, date_trunc('month', CURRENT_DATE)),
+        (v_subscriber_id, 'SMS',   0, date_trunc('month', CURRENT_DATE)),
+        (v_subscriber_id, 'DATA',  0, date_trunc('month', CURRENT_DATE));
 
-    -- =========================
-    -- Return Subscriber ID
-    -- =========================
     RETURN v_subscriber_id;
 
 END;
