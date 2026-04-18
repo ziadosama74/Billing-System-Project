@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bills | Billing System</title>
+
+        <!-- ICONS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../CSS/bills.css">
+    </head>
+
+    <body class="theme">
+
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-tower-cell"></i> Postpaid Billing System
+            </div>
+
+            <a href="dashboard.html" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        </div>
+
+        <div class="container">
+
+            <!-- HEADER -->
+            <div class="header">
+
+                <div class="header-left">
+                    <div class="title-icon">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+
+                    <div class="title-text">
+                        <h1>Invoices Dashboard</h1>
+                        <p>Monitor billing & payments in real-time</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <img src="../images/money.gif" class="header-gif" alt="money">
+                </div>
+                <!-- SEARCH -->
+                <div class="search-wrapper">
+
+                    <form id="searchForm" action="SearchBill" method="get" class="search-bar">
+
+                        <input type="hidden" name="status" id="statusInput">
+
+                        <div class="field">
+                            <label>MSISDN</label>
+                            <div class="input-box">
+                                <i class="fa-solid fa-phone"></i>
+                                <input type="text" name="msisdn">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Month</label>
+                            <div class="input-box">
+                                <i class="fa-solid fa-calendar"></i>
+                                <select name="month" id="monthSelect"></select>
+                            </div>
+                        </div>
+
+                        <div class="field btn-field">
+                            <button type="submit" class="search-btn">
+                                <i class="fa-solid fa-search"></i> Search
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <!-- STATUS CARDS -->
+            <div class="status-cards">
+
+                <div class="status-card paid" onclick="filterStatus('PAID', this)">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>Paid</h3>
+                </div>
+
+                <div class="status-card unpaid" onclick="filterStatus('UNPAID', this)">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <h3>Unpaid</h3>
+                </div>
+
+                <div class="status-card progress" onclick="filterStatus('PROGRESS', this)">
+                    <i class="fa-solid fa-spinner"></i>
+                    <h3>Progress</h3>
+                </div>
+
+                <div class="status-card all" onclick="filterStatus('ALL', this)">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h3>All</h3>
+                </div>
+
+            </div>
+
+            <!-- TABLE -->
+            <div class="table-card">
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Subscriber</th>
+                            <th>MSISDN</th>
+                            <th>Month</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>#1023</td>
+
+                            <td class="user-cell">
+                                <div class="avatar">Z</div>
+                                <span>Ziad Osama</span>
+                            </td>
+
+                            <td>01123456789</td>
+                            <td>April 2026</td>
+                            <td class="amount">$45</td>
+
+                            <td>
+                                <span class="badge paid">
+                                    <i class="fa-solid fa-check"></i> Paid
+                                </span>
+                            </td>
+
+                            <td class="actions">
+
+                                <form action="ViewBill">
+                                    <button class="icon-btn view" title="View">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </form>
+
+                                <form action="UpdateBillStatus" method="post">
+                                    <input type="hidden" name="status" value="UNPAID">
+                                    <button class="icon-btn danger" title="Mark Unpaid">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </form>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>#1024</td>
+
+                            <td class="user-cell">
+                                <div class="avatar">A</div>
+                                <span>Ahmed Fady</span>
+                            </td>
+
+                            <td>01098765432</td>
+                            <td>April 2026</td>
+                            <td class="amount">$62</td>
+
+                            <td>
+                                <span class="badge unpaid">
+                                    <i class="fa-solid fa-xmark"></i> Unpaid
+                                </span>
+                            </td>
+
+                            <td class="actions">
+
+                                <form action="ViewBill">
+                                    <button class="icon-btn view">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </form>
+
+                                <form action="UpdateBillStatus" method="post">
+                                    <input type="hidden" name="status" value="PAID">
+                                    <button class="icon-btn success">
+                                        <i class="fa-solid fa-check"></i>
+                                    </button>
+                                </form>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+        <script src="../JS/bills.js"></script>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Postpaid Billing System | Login</title>
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- YOUR CSS (same path) -->
+        <link rel="stylesheet" href="../CSS/login.css">
+    </head>
+
+    <body>
+
+        <!-- BACKGROUND ICONS -->
+        <div id="particles"></div>
+
+        <div class="container">
+
+            <!-- HEADER -->
+            <div class="header">
+                <h1>
+                    <i class="fa-solid fa-tower-cell"></i> 
+                    Postpaid Billing System
+                </h1>
+
+                <p>
+                    Manage subscribers, billing, and telecom services through a unified platform.
+                </p>
+            </div>
+
+            <!-- LOGIN BOX -->
+            <div class="login-box">
+
+                <h2>Admin Login</h2>
+
+                <!-- IMPORTANT: prevent reload -->
+                <form onsubmit="handleLogin(event)" action="../HTML/dashboard.html">
+
+                    <!-- USERNAME -->
+                    <div class="input-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="username" required>
+                        <label>Username</label>
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" required>
+                        <label>Password</label>
+
+                        <span class="toggle" onclick="togglePassword()">
+                            <i id="eyeIcon" class="fa-solid fa-eye-slash"></i>
+                        </span>
+                    </div>
+
+                    <!-- ERROR MESSAGE -->
+                    <div id="errorMsg" class="error"></div>
+
+                    <button type="submit" class="login-btn">
+                        Login
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- YOUR JS (same path) -->
+        <script src="../JS/login.js"></script>
+
+    </body>
+</html>

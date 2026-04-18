@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Subscribers | Billing System</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="../CSS/subscribers.css">
+
+    </head>
+    <body class="theme">
+
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-tower-cell"></i> Postpaid Billing System
+            </div>
+
+            <a href="dashboard.html" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        </div>
+
+        <div class="container">
+
+            <div class="header">
+                <div class="title-section">
+
+                    <div class="title-left">
+<!--                        <div class="title-icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>-->
+                        <div class="title-visual">
+                        <img src="../images/users.gif" alt="Users Animation">
+                    </div>
+                        <div class="title-text">
+                            <h1>Subscribers Management</h1>
+                            <p>Control, search and manage all subscribers in your billing system</p>
+                        </div>
+                    </div>
+
+                    <!-- 🔥 RIGHT VISUAL -->
+                    
+
+                </div>
+
+                <div class="controls">
+
+                    <!-- SEARCH -->
+                    <form action="SearchSubscriber" method="get" class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" name="keyword" placeholder="Search MSISDN or Name">
+                    </form>
+
+                    <!-- ACTION BUTTONS -->
+                    <form action="GetAllSubscribers" method="get">
+                        <button type="submit" class="btn all-btn">
+                            <i class="fa-solid fa-list"></i>
+                        </button>
+                    </form>
+
+                    <a href="add-subscriber.html" class="btn add-btn">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- TABLE CARD -->
+            <div class="table-card">
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Subscriber</th>
+                            <th>MSISDN</th>
+                            <th>Plan</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+
+                            <td class="user-cell">
+                                <div class="avatar">A</div>
+                                <span>Ahmed Ali</span>
+                            </td>
+
+                            <td>01012345678</td>
+                            <td><span class="plan gold">Gold</span></td>
+                            <td><span class="status active">Active</span></td>
+
+                            <td class="actions">
+                                <form action="ViewSubscriber"><button class="icon-btn view"><i class="fa-solid fa-eye"></i></button></form>
+                                <form action="EditSubscriber"><button class="icon-btn edit"><i class="fa-solid fa-pen"></i></button></form>
+                                <form action="DeleteSubscriber"><button class="icon-btn delete"><i class="fa-solid fa-trash"></i></button></form>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </body>
+</html>

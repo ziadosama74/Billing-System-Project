@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>CDR Upload | Billing System</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="../CSS/CDR.css">
+    </head>
+
+    <body class="theme">
+        <!-- HEADER -->
+        <div class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-tower-cell"></i> Postpaid Billing System
+            </div>
+
+            <button class="logout-btn" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+        </div>
+
+        <div class="container">
+            <div class="cdr-visual">
+                <div class="img-box">
+                    <img src="../images/CDRFile.gif" alt="CDR File">
+                    <span>CDR File</span>
+                </div>
+            </div>
+
+            <h1 class="title">
+                <i class="fa-solid fa-database"></i> CDR Upload Center
+            </h1>
+
+            <p class="subtitle">
+                Upload Call Detail Records to be processed by the billing system
+            </p>
+
+            <!-- FORM (SERVLET READY) -->
+            <form action="uploadCDR" method="post" enctype="multipart/form-data">
+
+                <!-- DROP AREA -->
+                <div class="upload-box" id="dropArea">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <h3>Drag & Drop CDR File</h3>
+                    <p>or click to browse</p>
+
+                    <!-- IMPORTANT NAME -->
+                    <input type="file" name="cdrFile" id="fileInput" hidden required>
+                </div>
+
+                <!-- FILE INFO -->
+                <div class="file-info" id="fileInfo"></div>
+
+                <!-- SUBMIT -->
+                <button type="submit" class="upload-btn">
+                    Upload & Process
+                </button>
+
+            </form>
+
+            <!-- BACK -->
+            <a href="dashboard.html" class="back-btn">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+        <script src="../JS/CDR.js"></script>
+    </body>
+</html>

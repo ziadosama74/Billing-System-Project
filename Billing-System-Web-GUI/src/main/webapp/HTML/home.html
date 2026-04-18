@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../CSS/home.css">
+        <title>📡 Postpaid Billing System</title>
+        <style>
+            /* SYSTEM VISUAL SECTION */
+            .system-visual {
+                margin-top: 70px;
+                text-align: center;
+            }
+
+            /* 🔵 LOGO BALL */
+            .logo-ball {
+                width: 160px;
+                height: 160px;
+                margin: 0 auto 30px;
+
+                border-radius: 50%;
+                position: relative;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                background: radial-gradient(circle, #1e293b, #020617);
+
+                box-shadow: 0 0 30px rgba(56,189,248,0.3);
+
+                animation: float 4s ease-in-out infinite;
+            }
+
+            /* IMAGE */
+            .logo-ball img {
+                width: 75%;
+                border-radius: 50%;
+            }
+
+            /* ROTATING RING */
+            .logo-ball::before {
+                content: "";
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+
+                border-top: 2px solid #38bdf8;
+                border-right: 2px solid #a78bfa;
+
+                animation: spin 3s linear infinite;
+            }
+
+            /* GLOW */
+            .logo-ball::after {
+                content: "";
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+
+                background: conic-gradient(#38bdf8, #a78bfa, #22c55e, #38bdf8);
+                filter: blur(20px);
+                opacity: 0.25;
+
+                animation: spinReverse 6s linear infinite;
+            }
+
+
+            /* ANIMATIONS */
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes spinReverse {
+                from {
+                    transform: rotate(360deg);
+                }
+                to {
+                    transform: rotate(0deg);
+                }
+            }
+
+            @keyframes float {
+                0%,100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-8px);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- MAIN -->
+        <div class="center">
+            <!-- SYSTEM VISUAL CENTER -->
+            <div class="system-visual">
+
+                <!-- LOGO BALL -->
+                <div class="logo-ball">
+                    <img src="../images/logo.png" alt="logo">
+                </div>
+            </div>
+            <div class="title">Postpaid Billing System</div>
+
+            <div class="desc">
+                A telecom-grade solution that processes CDRs through MSC and Mediation,
+                applies rating logic in the Billing System, and generates accurate invoices
+                for postpaid customers.
+            </div>
+
+            <button class="login-btn" onclick="goToLogin()">Admin Login</button>
+
+            <!-- FLOW -->
+            <div class="flow">
+                <div class="step">📞<span>CDR</span></div>
+                <div class="line"></div>
+
+                <div class="step">📡<span>MSC</span></div>
+                <div class="line"></div>
+
+                <div class="step">🔄<span>Mediation</span></div>
+                <div class="line"></div>
+
+                <div class="step">💰<span>Billing</span></div>
+                <div class="line"></div>
+
+                <div class="step">🧾<span>Invoice</span></div>
+            </div>
+
+        </div>
+    </body>
+    <script src="../JS/home.js"></script>
+</html>
