@@ -38,19 +38,19 @@
                 <h2>Admin Login</h2>
 
                 <!-- IMPORTANT: prevent reload -->
-                <form onsubmit="handleLogin(event)" action="../HTML/dashboard.html">
+                <form method="post" action="/Billing-System-Web-GUI/LoginRedirectServlet">
 
                     <!-- USERNAME -->
                     <div class="input-group">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" id="username" required>
+                        <input type="text" name="username" required>
                         <label>Username</label>
                     </div>
 
                     <!-- PASSWORD -->
                     <div class="input-group">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="password" required>
+                        <input type="password" name="password" required>
                         <label>Password</label>
 
                         <span class="toggle" onclick="togglePassword()">
@@ -58,7 +58,6 @@
                         </span>
                     </div>
 
-                    <!-- ERROR MESSAGE -->
                     <div id="errorMsg" class="error"></div>
 
                     <button type="submit" class="login-btn">

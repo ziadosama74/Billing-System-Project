@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/Billing-System-Web-GUI/CSS/Add_Subscriber.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <title>➕ Add New Subscriber | Postpaid Billing System</title>
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-tower-cell"></i>
+                    <span>Postpaid Billing System</span>
+                </div>
+                <div class="nav-links">
+                    <a href="/Billing-System-Web-GUI/SubscribersMainPageServlet" class="nav-link">
+                        <i class="fas fa-users"></i> Subscribers
+                    </a>
+                    <a href="/Billing-System-Web-GUI/HTML/AddNewSubscriber.html" class="nav-link active">
+                        <i class="fas fa-user-plus"></i> Add New
+                    </a>
+                    <a href="/Billing-System-Web-GUI/HTML/dashboard.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i> Dashboard
+                    </a>
+                </div>
+                <div class="nav-user">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Admin</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Header Section -->
+            <div class="page-header">
+                <div class="header-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="header-text">
+                    <h1>Add New Subscriber</h1>
+                    <p>Fill in the details below to register a new subscriber in the system</p>
+                </div>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <form action="AddSubscriber" method="post" class="subscriber-form" id="subscriberForm" novalidate>
+                    <!-- MSISDN (Phone Number) -->
+                    <div class="form-group">
+                        <label for="msisdn">
+                            <i class="fas fa-phone"></i>
+                            MSISDN (Phone Number)
+                            <span class="required">*</span>
+                        </label>
+                        <input type="tel" 
+                               id="msisdn" 
+                               name="msisdn" 
+                               placeholder="Enter 11-digit phone number (e.g., 01126165494)"
+                               maxlength="11">
+                        <div class="error-message" id="msisdn-error"></div>
+                    </div>
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="fas fa-user"></i>
+                            Full Name
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" 
+                               id="name" 
+                               name="name" 
+                               placeholder="Enter subscriber's full name (e.g., Ahmed Mohamed Ali)">
+                        <div class="error-message" id="name-error"></div>
+                    </div>
+
+                    <!-- International ID -->
+                    <div class="form-group">
+                        <label for="internationalid">
+                            <i class="fas fa-passport"></i>
+                            International ID
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" 
+                               id="internationalid" 
+                               name="internationalid" 
+                               placeholder="Enter 8-digit national ID or passport number"
+                               maxlength="20">
+                        <div class="error-message" id="internationalid-error"></div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label for="address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Address
+                            <span class="required">*</span>
+                        </label>
+                        <textarea id="address" 
+                                  name="address" 
+                                  rows="3" 
+                                  placeholder="Enter complete address (e.g., Cairo, Egypt)"></textarea>
+                        <div class="error-message" id="address-error"></div>
+                    </div>
+
+                    <!-- Plan Selection as Cards -->
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-tag"></i>
+                            Select Plan
+                            <span class="required">*</span>
+                        </label>
+                     

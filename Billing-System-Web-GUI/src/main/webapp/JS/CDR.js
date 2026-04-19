@@ -1,7 +1,7 @@
-// WAIT FOR DOM
-console.log(document.getElementById("dropArea"));
-document.addEventListener("DOMContentLoaded", () => {
+  console.log("Ziad");
+  document.addEventListener("DOMContentLoaded", () => {
 
+    const form = document.querySelector("form");
     const dropArea = document.getElementById("dropArea");
     const fileInput = document.getElementById("fileInput");
     const fileInfo = document.getElementById("fileInfo");
@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         selectedFile = e.dataTransfer.files[0];
 
-        // 🔥 Important: assign using DataTransfer (safe way)
         const dt = new DataTransfer();
         dt.items.add(selectedFile);
         fileInput.files = dt.files;
@@ -43,9 +42,22 @@ document.addEventListener("DOMContentLoaded", () => {
         showFile(selectedFile);
     });
 
-    // SHOW FILE
+    // 🔴 IMPORTANT: BLOCK SUBMIT IF NO FILE
+    form.addEventListener("submit", (e) => {
+        if (!fileInput.files.length) {
+            e.preventDefault(); // ❌ stop form
+
+            fileInfo.innerHTML = `
+                <span style="color:red;">
+                    ❌ Please upload a file first
+                </span>
+            `;
+        }
+    });
+
     function showFile(file) {
-        if (!file) return;
+        if (!file)
+            return;
 
         fileInfo.innerHTML = `
             <i class="fa-solid fa-file"></i>
@@ -54,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
-
 // LOGOUT FUNCTION
 function logout() {
     window.location.href = "../HTML/home.html";

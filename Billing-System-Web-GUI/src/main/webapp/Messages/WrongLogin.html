@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login Failed</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', sans-serif;
+            }
+
+            body {
+                height: 100vh;
+                overflow: hidden;
+                background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Background Glow */
+            body::before {
+                content: "";
+                position: absolute;
+                width: 150%;
+                height: 150%;
+                background: radial-gradient(circle, rgba(56,189,248,0.15), transparent 60%);
+                animation: moveBg 15s linear infinite;
+                z-index: -1;
+            }
+
+            @keyframes moveBg {
+                0% {
+                    transform: translate(0,0);
+                }
+                50% {
+                    transform: translate(-20%, -20%);
+                }
+                100% {
+                    transform: translate(0,0);
+                }
+            }
+
+            .container {
+                text-align: center;
+                background: rgba(30, 41, 59, 0.8);
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 0 30px rgba(56,189,248,0.2);
+                backdrop-filter: blur(10px);
+            }
+
+            .error-icon {
+                font-size: 60px;
+                margin-bottom: 20px;
+                color: #f87171;
+            }
+
+            h1 {
+                margin-bottom: 10px;
+                font-size: 28px;
+            }
+
+            p {
+                margin-bottom: 30px;
+                color: #cbd5f5;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                border: none;
+                border-radius: 10px;
+                background: #38bdf8;
+                color: #020617;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .btn:hover {
+                background: #0ea5e9;
+                transform: scale(1.05);
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="error-icon">❌</div>
+            <h1>Login Failed</h1>
+            <p>Invalid username or password. Please try again.</p>
+
+            <button class="btn" onclick="window.location.href = '../HTML/login.html'">
+                Try Again
+            </button>
+        </div>
+
+    </body>
+</html>
+

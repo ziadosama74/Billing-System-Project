@@ -17,12 +17,14 @@ body.theme {
 /* SOFT NETWORK GLOW */
 body.theme::before {
     content: "";
-    position: absolute;
+    position: fixed;
     width: 200%;
     height: 200%;
     background: radial-gradient(circle, rgba(56,189,248,0.15), transparent 60%);
     animation: moveBg 15s linear infinite;
     z-index: -1;
+    top: -25%;
+    left: -25%;
 }
 
 @keyframes moveBg {
@@ -37,39 +39,89 @@ body.theme::before {
     }
 }
 
-/* NAVBAR */
+/* NAVBAR - UPDATED STYLE */
 .navbar {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-/* LOGO */
-.logo {
-    font-size: 20px;
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
     font-weight: bold;
-    background: linear-gradient(90deg, #38bdf8, #a78bfa);
+    background: linear-gradient(135deg, #38bdf8, #a78bfa);
     -webkit-background-clip: text;
     color: transparent;
 }
 
-/* LOGOUT */
+.nav-logo i {
+    font-size: 1.5rem;
+    color: #38bdf8;
+    background: none;
+    -webkit-background-clip: unset;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.nav-link:hover {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link i {
+    font-size: 1rem;
+}
+
+/* LOGOUT BUTTON */
 .logout-btn {
-    padding: 8px 16px;
+    padding: 8px 20px;
     border-radius: 20px;
     border: none;
     background: linear-gradient(45deg, #22c55e, #38bdf8);
     color: #020617;
+    font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
 }
 
 .logout-btn:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
 }
 
 /* CONTAINER */
@@ -254,9 +306,6 @@ body.theme::before {
     }
 }
 
-
-
-
 /* SYSTEM VISUAL SECTION */
 .system-visual {
     margin-top: 70px;
@@ -268,18 +317,13 @@ body.theme::before {
     width: 160px;
     height: 160px;
     margin: 0 auto 30px;
-
     border-radius: 50%;
     position: relative;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     background: radial-gradient(circle, #1e293b, #020617);
-
     box-shadow: 0 0 30px rgba(56,189,248,0.3);
-
     animation: float 4s ease-in-out infinite;
 }
 
@@ -296,10 +340,8 @@ body.theme::before {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-
     border-top: 2px solid #38bdf8;
     border-right: 2px solid #a78bfa;
-
     animation: spin 3s linear infinite;
 }
 
@@ -310,11 +352,9 @@ body.theme::before {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-
     background: conic-gradient(#38bdf8, #a78bfa, #22c55e, #38bdf8);
     filter: blur(20px);
     opacity: 0.25;
-
     animation: spinReverse 6s linear infinite;
 }
 
@@ -332,9 +372,7 @@ body.theme::before {
     padding: 20px 30px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
-
     border: 1px solid rgba(255,255,255,0.08);
-
     transition: 0.3s;
 }
 
@@ -379,5 +417,50 @@ body.theme::before {
     }
     50% {
         transform: translateY(-8px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .network-flow {
+        flex-direction: column;
+    }
+    
+    .line {
+        width: 2px;
+        height: 40px;
+    }
+    
+    .signal {
+        width: 2px;
+        height: 20px;
+        top: -20px;
+        left: 0;
+        animation: moveSignalVertical 2s linear infinite;
+    }
+    
+    @keyframes moveSignalVertical {
+        from {
+            top: -20px;
+        }
+        to {
+            top: 100%;
+        }
     }
 }

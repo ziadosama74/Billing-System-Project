@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <title>❌Database Server Error</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                min-height: 100vh;
+                background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                width: 150%;
+                height: 150%;
+                background: radial-gradient(circle, rgba(56,189,248,0.15), transparent 60%);
+                animation: moveBg 15s linear infinite;
+                z-index: -1;
+                top: -25%;
+                left: -25%;
+            }
+
+            @keyframes moveBg {
+                0%, 100% { transform: translate(0, 0); }
+                50% { transform: translate(-20%, -20%); }
+            }
+
+            .message-container {
+                max-width: 450px;
+                margin: 2rem;
+                padding: 2rem;
+                text-align: center;
+                background: rgba(15, 23, 42, 0.5);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                border: 1px solid rgba(239, 68, 68, 0.3);
+                animation: slideIn 0.5s ease-out;
+            }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .error-icon {
+                width: 100px;
+                height: 100px;
+                background: linear-gradient(135deg, #ef4444, #dc2626);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1.5rem;
+                box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+            }
+
+            .error-icon i {
+                font-size: 3.5rem;
+                color: white;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+                color: #ef4444;
+            }
+
+            .message {
+                color: #94a3b8;
+                font-size: 1rem;
+                margin-bottom: 1rem;
+                line-height: 1.5;
+            }
+
+            .error-detail {
+                background: rgba(0, 0, 0, 0.3);
+                padding: 0.8rem;
+                border-radius: 10px;
+                margin: 1rem 0;
+                font-size: 0.85rem;
+                color: #f87171;
+                font-family: monospace;
+            }
+
+            .button-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                margin-top: 0.5rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 8px;
+                font-size: 0.9rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .btn-primary {
+                background: linear-gradient(135deg, #38bdf8, #a78bfa);
+                color: white;
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            }
+
+            .btn-secondary {
+                background: rgba(100, 116, 139, 0.2);
+                color: #94a3b8;
+                border: 1px solid rgba(100, 116, 139, 0.3);
+            }
+
+            .btn-secondary:hover {
+                background: rgba(100, 116, 139, 0.4);
+                transform: translateY(-2px);
+            }
+
+            @media (max-width: 768px) {
+                .message-container {
+                    margin: 1rem;
+                    padding: 1.5rem;
+                }
+                
+                .error-icon {
+                    width: 80px;
+                    height: 80px;
+                }
+                
+                .error-icon i {
+                    font-size: 2.5rem;
+                }
+                
+                h1 {
+                    font-size: 1.5rem;
+                }
+                
+                .button-group {
+                    flex-direction: column;
+                }
+                
+                .btn {
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="message-container">
+            <div class="error-icon">
+                <i class="fas fa-database"></i>
+            </div>
+            <h1>Database Server Error</h1>
+            <p class="message">Unable to connect to the database server. Please try again later.</p>
+            <div class="error-detail" id="errorDetail">
+                <i class="fas fa-circle-info"></i> Connection failed
+            </div>
+            
+            <div class="button-group">
+                <a href="/Billing-System-Web-GUI/HTML/AddNewSubscriber.html" class="btn btn-primary">
+                    <i class="fas fa-redo-alt"></i> Try Again
+                </a>
+                <a href="/Billing-System-Web-GUI/HTML/dashboard.html" class="btn btn-secondary">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+            </div>
+        </div>
+        
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorMsg = urlParams.get('error');
+            if(errorMsg) {
+                document.getElementById('errorDetail').innerHTML = '<i class="fas fa-circle-info"></i> ' + decodeURIComponent(errorMsg);
+            }
+        </script>
+    </body>
+</html>
