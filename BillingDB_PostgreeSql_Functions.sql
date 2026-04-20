@@ -258,3 +258,144 @@ BEGIN
 
 END;
 $$;
+
+
+
+
+create or replace function GetSubscriberByMSISDN(P_msisdn varchar(15)) 
+returns TABLE
+(
+  subscriberid int,
+  msisdn varchar(15),
+  name varchar(60),
+  internationalid varchar(20),
+  address varchar(255),
+  isdeleted BOOLEAN,
+  plan varchar(50)
+)
+as $$
+begin 
+    return query
+    select 
+        S.subscriberid,
+        S.msisdn,
+        S.name,
+        S.internationalid,
+        S.address,
+        S.isdeleted,
+        P.planname
+    from subscribers S 
+    join plans P on S.planid = P.planid 
+    where S.msisdn = P_msisdn;  -- FIXED: was 'P_msisdn' not 'P_msisdn' (typo)
+end;
+$$
+language plpgsql;
+
+
+
+create or replace function GetAllPlans() RETURNS table
+(
+  planid int,
+  planname varchar(50),
+  monthlyfee numeric(10,2),
+  description varchar(255),
+  isactive boolean,
+  data_allowance int,
+  sms_allowance int,
+  voice_allowance int,
+  data_free int,
+  sms_free int,
+  voice_free int,
+  color varchar(15)
+) 
+as $$
+begin
+  return query
+    SELECT 
+      P.planid,
+      P.planname,
+      P.monthlyfee,
+      P.description,
+      P.isactive,
+      
+      -- Allowances (included units)
+      COALESCE(MAX(CASE WHEN A.servicetype = 'DATA' THEN A.includedunits END), 0) AS data_allowance,
+      COALESCE(MAX(CASE WHEN A.servicetype = 'SMS' THEN A.includedunits END), 0) AS sms_allowance,
+      COALESCE(MAX(CASE WHEN A.servicetype = 'VOICE' THEN A.includedunits END), 0) AS voice_allowance,
+      
+      -- Free Units
+      COALESCE(MAX(CASE WHEN F.servicetype = 'DATA' THEN F.freeunits END), 0) AS data_free,
+      COALESCE(MAX(CASE WHEN F.servicetype = 'SMS' THEN F.freeunits END), 0) AS sms_free,
+      COALESCE(MAX(CASE WHEN F.servicetype = 'VOICE' THEN F.freeunits END), 0) AS voice_free,   
+      P.color
+      
+    FROM plans P 
+    LEFT JOIN plan_allowances A ON P.planid = A.planid 
+    LEFT JOIN plan_free_units F ON P.planid = F.planid
+    GROUP BY P.planid, P.planname, P.monthlyfee, P.description, P.isactive, P.color
+    ORDER BY P.planid;
+end;
+$$ language plpgsql;
+
+
+
+CREATE OR REPLACE FUNCTION insert_plan_full(
+    p_planname VARCHAR,
+    p_monthlyfee NUMERIC,
+    p_description VARCHAR,
+    p_color VARCHAR,
+
+    -- Allowances
+    p_data_allowance INT,
+    p_sms_allowance INT,
+    p_voice_allowance INT,
+
+    -- Free Units
+    p_data_free INT,
+    p_sms_free INT,
+    p_voice_free INT
+)
+RETURNS VOID
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    v_planid INT;
+BEGIN
+    -- 1️⃣ Insert into plans
+    INSERT INTO plans (planname, monthlyfee, description, color)
+    VALUES (p_planname, p_monthlyfee, p_description, p_color)
+    RETURNING planid INTO v_planid;
+
+    -- 2️⃣ Insert Allowances
+    INSERT INTO plan_allowances (planid, servicetype, includedunits)
+    VALUES 
+        (v_planid, 'DATA', COALESCE(p_data_allowance, 0)),
+        (v_planid, 'SMS', COALESCE(p_sms_allowance, 0)),
+        (v_planid, 'VOICE', COALESCE(p_voice_allowance, 0));
+
+    -- 3️⃣ Insert Free Units
+    INSERT INTO plan_free_units (planid, servicetype, freeunits)
+    VALUES 
+        (v_planid, 'DATA', COALESCE(p_data_free, 0)),
+        (v_planid, 'SMS', COALESCE(p_sms_free, 0)),
+        (v_planid, 'VOICE', COALESCE(p_voice_free, 0));
+
+END;
+$$;
+
+
+
+SELECT insert_plan_full(
+    'ZOZ',
+    250.00,
+    'Best plan for heavy users',
+    '#38bdf8',
+
+    50000,  -- DATA MB
+    1000,   -- SMS
+    2000,   -- VOICE
+
+    5000,   -- DATA FREE
+    100,    -- SMS FREE
+    300     -- VOICE FREE
+);

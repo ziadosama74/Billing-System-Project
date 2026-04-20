@@ -49,6 +49,8 @@ public class SubscribersMainPageServlet extends HttpServlet {
         out.print("</div>");
         out.print("</div>");
         out.print("</body>");
+        out.print("<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>");
+        out.print("<script src=\"/Billing-System-Web-GUI/JS/subscribers.js\"></script>");
         out.print("</html>");
     }
     // ===========================================================================================
@@ -56,7 +58,8 @@ public class SubscribersMainPageServlet extends HttpServlet {
     // ===========================================================================================
     private static void LoadSubscriberTable(PrintWriter out, SubscriberClass subscriber) 
     {
-        try {
+        try 
+        {
             out.print("<tr>");
             out.print("<td>");
             out.print(subscriber.getID());
@@ -80,16 +83,19 @@ public class SubscribersMainPageServlet extends HttpServlet {
             out.print("</td>");
             String planClass = subscriber.getPlan().toLowerCase();
             out.print("<td><span class=\"plan " + planClass + "\">" + subscriber.getPlan() + "</span></td>");
-            out.print("<td><span class=\"status " + (!subscriber.isStatus() ? "active" : "inactive") + "\">" + (!subscriber.isStatus() ? "Active" : "Inactive") + "</span></td>");
+            out.print("<td><span class=\"status " + (subscriber.isStatus() ? "active" : "inactive") + "\">" + (subscriber.isStatus() ? "Active" : "Inactive") + "</span></td>");
             out.print("<td class=\"actions\">");
             out.print("<form action=\"EditSubscriber\">");
             out.print("<input type=\"hidden\" name=\"id\" value=\"" + subscriber.getID() + "\">");
             out.print("<button class=\"icon-btn edit\"><i class=\"fa-solid fa-pen\"></i></button>");
             out.print("</form>");
-            out.print("<form action=\"DeleteSubscriber\">");
+            
+            // Note: onsubmit calls confirmDelete and returns false, so form doesn't submit directly
+            out.print("<form action=\"/Billing-System-Web-GUI/DeleteSubscriberServlet\" method=\"post\" onsubmit=\"return confirmDelete(" + subscriber.getID() + ", '" + subscriber.getName().replace("'", "\\'") + "', '" + subscriber.getMSISDN() + "');\">");
             out.print("<input type=\"hidden\" name=\"id\" value=\"" + subscriber.getID() + "\">");
-            out.print("<button class=\"icon-btn delete\"><i class=\"fa-solid fa-trash\"></i></button>");
+            out.print("<button type=\"submit\" class=\"icon-btn delete\"><i class=\"fa-solid fa-trash\"></i></button>");
             out.print("</form>");
+            
             out.print("</td>");
             out.print("</tr>");
         }

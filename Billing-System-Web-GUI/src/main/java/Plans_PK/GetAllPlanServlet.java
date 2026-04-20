@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Plans_PK;
 
 import Subscribers_PK.SubscriberClass;
@@ -43,7 +39,7 @@ public class GetAllPlanServlet extends HttpServlet {
         {
            
             out.print("    <!-- Basic Plan -->");
-            out.print("    <div class=\"plan-card\" data-plan=\"" + plan.getPlanname() + "\">");
+            out.print("    <div class=\"plan-card\" data-plan=\"" + plan.getPlanid()+ "\">");
             out.print("        <div class=\"plan-card-inner\">");
             out.print("            <div class=\"plan-name\" style = \"color : "+plan.getColor()+"\">"+plan.getPlanname() +"</div>");
             out.print("            <div class=\"plan-price\">EGP "+ plan.getMonthlyfee() +"<span> /month</span></div>");
@@ -54,6 +50,7 @@ public class GetAllPlanServlet extends HttpServlet {
             out.print("            </div>");
             out.print("        </div>");
             out.print("    </div>");
+            out.print("<input type=\"hidden\" id=\"selectedPlan\" name=\"plan\">");
         }
         catch (Exception e) 
         {
@@ -64,7 +61,6 @@ public class GetAllPlanServlet extends HttpServlet {
     {
         try 
         {
-            out.print("<input type=\"hidden\" id=\"selectedPlan\" name=\"plan\">");
             out.print("<div class=\"error-message\" id=\"plan-error\"></div>");
             out.print("</div>");
             out.print("");

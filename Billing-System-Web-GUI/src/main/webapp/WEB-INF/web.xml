@@ -16,6 +16,14 @@
         <servlet-name>GetAllPlanServlet</servlet-name>
         <servlet-class>Plans_PK.GetAllPlanServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddSubscriberServlet</servlet-name>
+        <servlet-class>Subscribers_PK.AddSubscriberServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteSubscriberServlet</servlet-name>
+        <servlet-class>Subscribers_PK.DeleteSubscriberServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginRedirectServlet</servlet-name>
         <url-pattern>/LoginRedirectServlet</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>GetAllPlanServlet</servlet-name>
         <url-pattern>/GetAllPlanServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddSubscriberServlet</servlet-name>
+        <url-pattern>/AddSubscriberServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSubscriberServlet</servlet-name>
+        <url-pattern>/DeleteSubscriberServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

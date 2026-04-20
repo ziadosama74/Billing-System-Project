@@ -162,4 +162,28 @@ public class PlanClass
         }
         return PlansList;
     }
+    public static String GetPlanNameByID(int id)
+    {
+        String Planname = "";
+        try 
+        {
+            Connection con = DB.getConnection();
+            String sql = "select * from GetPlanNameByID(?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet RS = stmt.executeQuery();
+            if(RS.next())
+            {
+              Planname = RS.getString(1);
+            }
+            RS.close();
+            stmt.close();
+            con.close();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return Planname;
+    }
 }
