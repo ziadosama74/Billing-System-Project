@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <title>✏️ Edit Subscriber | Postpaid Billing System</title>
+        <link rel="stylesheet" href ="../CSS/EditSubscriber.css" >
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-tower-cell"></i>
+                    <span>Postpaid Billing System</span>
+                </div>
+                <div class="nav-links">
+                    <a href="/Billing-System-Web-GUI/SubscribersMainPageServlet" class="nav-link">
+                        <i class="fas fa-users"></i> Subscribers
+                    </a>
+                    <a href="/Billing-System-Web-GUI/HTML/AddNewSubscriber.html" class="nav-link">
+                        <i class="fas fa-user-plus"></i> Add New
+                    </a>
+                    <a href="/Billing-System-Web-GUI/HTML/dashboard.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i> Dashboard
+                    </a>
+                </div>
+                <div class="nav-user">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Admin</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Header Section -->
+            <div class="page-header">
+                <div class="header-icon">
+                    <i class="fas fa-user-edit"></i>
+                </div>
+                <div class="header-text">
+                    <h1>Edit Subscriber</h1>
+                    <p>Update subscriber information in the billing system</p>
+                </div>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <form action="UpdateSubscriber" method="post" class="edit-form" id="editForm">
+                    <input type="hidden" id="subscriberId" name="id">
+                    
+                    <div class="form-row">
+                        <!-- MSISDN -->
+                        <div class="form-group">
+                            <label for="msisdn">
+                                <i class="fas fa-phone"></i>
+                                MSISDN
+                                <span class="required">*</span>
+                            </label>
+                            <input type="tel" id="msisdn" name="msisdn" placeholder="Enter 11-digit phone number" maxlength="11">
+                            <div class="error-message" id="msisdn-error"></div>
+                        </div>
+
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="name">
+                                <i class="fas fa-user"></i>
+                                Full Name
+                                <span class="required">*</span>
+                            </label>
+                            <input type="text" id="name" name="name" placeholder="Enter subscriber's full name">
+                            <div class="error-message" id="name-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- International ID -->
+                        <div class="form-group">
+                            <label for="internationalid">
+                                <i class="fas fa-passport"></i>
+                                International ID
+                                <span class="required">*</span>
+                            </label>
+                            <input type="text" id="internationalid" name="internationalid" placeholder="Enter national ID or passport number">
+                            <div class="error-message" id="internationalid-error"></div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="form-group">
+                            <label for="address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Address
+                                <span class="required">*</span>
+                            </label>
+                            <textarea id="address" name="address" rows="1" placeholder="Enter complete address"></textarea>
+                            <div class="error-message" id="address-error"></div>
+                        </div>
+                    </div>
+
+                    <!-- Plan Selection -->
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-tag"></i>
+                            Select Plan
+                            <span class="required">*</span>
+                        </label>
+                        <div class="plan-cards" id="planCards">
+                            
+                        </div>
+                        <input type="hidden" id="selectedPlan" name="plan">
+                        <div class="error-message" id="plan-error"></div>
+                    </div>
+
+                    <!-- Status Selection -->
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-circle"></i>
+                            Status
+                            <span class="required">*</span>
+                        </label>
+                        <div class="status-toggle">
+                            <label class="status-option active" id="statusActive">
+                                <input type="radio" name="status" value="true">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Active</span>
+                            </label>
+                            <label class="status-option inactive" id="statusInactive">
+                                <input type="radio" name="status" value="false">
+                                <i class="fas fa-times-circle"></i>
+                                <span>Inactive</span>
+                            </label>
+                        </div>
+                        <div class="error-message" id="status-error"></div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <a href="/Billing-System-Web-GUI/SubscribersMainPageServlet" class="btn btn-cancel">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+                        <button type="submit" class="btn btn-update">
+                            <i class="fas fa-save"></i> Update Subscriber
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="../JS/EditSubscriber.js"></script>
+    </body>
+</html>

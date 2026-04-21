@@ -24,6 +24,10 @@
         <servlet-name>DeleteSubscriberServlet</servlet-name>
         <servlet-class>Subscribers_PK.DeleteSubscriberServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditSubscriberServlet</servlet-name>
+        <servlet-class>Subscribers_PK.EditSubscriberServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginRedirectServlet</servlet-name>
         <url-pattern>/LoginRedirectServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>DeleteSubscriberServlet</servlet-name>
         <url-pattern>/DeleteSubscriberServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditSubscriberServlet</servlet-name>
+        <url-pattern>/EditSubscriberServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

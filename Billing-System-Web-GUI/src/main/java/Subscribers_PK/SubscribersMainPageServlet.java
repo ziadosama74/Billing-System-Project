@@ -85,7 +85,7 @@ public class SubscribersMainPageServlet extends HttpServlet {
             out.print("<td><span class=\"plan " + planClass + "\">" + subscriber.getPlan() + "</span></td>");
             out.print("<td><span class=\"status " + (subscriber.isStatus() ? "active" : "inactive") + "\">" + (subscriber.isStatus() ? "Active" : "Inactive") + "</span></td>");
             out.print("<td class=\"actions\">");
-            out.print("<form action=\"EditSubscriber\">");
+            out.print("<form action=\"/Billing-System-Web-GUI/EditSubscriberServlet\"  method=\"Get\">");
             out.print("<input type=\"hidden\" name=\"id\" value=\"" + subscriber.getID() + "\">");
             out.print("<button class=\"icon-btn edit\"><i class=\"fa-solid fa-pen\"></i></button>");
             out.print("</form>");

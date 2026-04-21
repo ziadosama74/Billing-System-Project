@@ -240,4 +240,39 @@ public class SubscriberClass {
         }
         return success;
     }
+    // =========================================================================
+    // ============             Get Subscriber by ID               =============
+    // =========================================================================
+    public SubscriberClass GetSubscriberByID(int id)
+    {
+        SubscriberClass subscriber = null;
+        try
+        {
+            Connection con = DB.getConnection();
+            String sql = "select * from GetSubscriberByID(?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet RS = stmt.executeQuery();
+            if(RS.next())
+            {
+                subscriber = new SubscriberClass();
+                subscriber.setID(RS.getInt("subscriberid"));
+                subscriber.setMSISDN(RS.getString("msisdn"));
+                subscriber.setName(RS.getString("name"));
+                subscriber.setInternational_ID(RS.getString("internationalid"));
+                subscriber.setAddress(RS.getString("address"));
+                subscriber.setStatus(RS.getBoolean("isactive"));
+                subscriber.setPlan(RS.getString("plan")); 
+                subscriber.setPlanID(RS.getInt("planid"));
+            }
+            RS.close();
+            stmt.close();
+            con.close();
+        }
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+        }
+        return subscriber;
+    }
 }
