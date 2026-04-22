@@ -28,6 +28,10 @@
         <servlet-name>EditSubscriberServlet</servlet-name>
         <servlet-class>Subscribers_PK.EditSubscriberServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateSubscriberOperationServlet</servlet-name>
+        <servlet-class>Subscribers_PK.UpdateSubscriberOperationServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginRedirectServlet</servlet-name>
         <url-pattern>/LoginRedirectServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>EditSubscriberServlet</servlet-name>
         <url-pattern>/EditSubscriberServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSubscriberOperationServlet</servlet-name>
+        <url-pattern>/UpdateSubscriberOperationServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

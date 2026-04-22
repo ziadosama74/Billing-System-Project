@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <title>✅ Success | Subscriber Issue Updated</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                min-height: 100vh;
+                background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Background Glow */
+            body::before {
+                content: "";
+                position: fixed;
+                width: 150%;
+                height: 150%;
+                background: radial-gradient(circle, rgba(56,189,248,0.15), transparent 60%);
+                animation: moveBg 15s linear infinite;
+                z-index: -1;
+                top: -25%;
+                left: -25%;
+            }
+
+            @keyframes moveBg {
+                0%, 100% {
+                    transform: translate(0, 0);
+                }
+                50% {
+                    transform: translate(-20%, -20%);
+                }
+            }
+
+            .message-container {
+                max-width: 550px;
+                margin: 2rem;
+                padding: 2rem;
+                text-align: center;
+                animation: slideIn 0.5s ease-out;
+            }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .success-icon {
+                width: 120px;
+                height: 120px;
+                background: linear-gradient(135deg, #22c55e, #16a34a);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 2rem;
+                animation: bounce 0.5s ease-out;
+                box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+            }
+
+            @keyframes bounce {
+                0% {
+                    transform: scale(0);
+                }
+                50% {
+                    transform: scale(1.2);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            .success-icon i {
+                font-size: 4rem;
+                color: white;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                background: linear-gradient(135deg, #22c55e, #38bdf8);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            .message {
+                color: #94a3b8;
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            .subscriber-details {
+                background: rgba(15, 23, 42, 0.5);
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+                text-align: left;
+                border: 1px solid rgba(34, 197, 94, 0.3);
+            }
+
+            .detail-row {
+                display: flex;
+                justify-content: space-between;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+
+            .detail-row:last-child {
+                border-bottom: none;
+            }
+
+            .detail-label {
+                color: #94a3b8;
+                font-weight: 600;
+            }
+
+            .detail-value {
+                color: #22c55e;
+                font-weight: 500;
+            }
+
+            .status-badge {
+                display: inline-block;
+                padding: 4px 12px;
+                border-radius: 20px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                background: rgba(34, 197, 94, 0.2);
+                color: #22c55e;
+                border: 1px solid rgba(34, 197, 94, 0.4);
+            }
+
+            .button-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                border: none;
+                border-radius: 10px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .btn-primary {
+                background: linear-gradient(135deg, #38bdf8, #a78bfa);
+                color: white;
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            }
+
+            .btn-secondary {
+                background: rgba(100, 116, 139, 0.2);
+                color: #94a3b8;
+                border: 1px solid rgba(100, 116, 139, 0.3);
+            }
+
+            .btn-secondary:hover {
+                background: rgba(100, 116, 139, 0.4);
+                transform: translateY(-2px);
+            }
+
+            @media (max-width: 768px) {
+                .message-container {
+                    margin: 1rem;
+                    padding: 1rem;
+                }
+
+                .success-icon {
+                    width: 90px;
+                    height: 90px;
+                }
+
+                .success-icon i {
+                    font-size: 3rem;
+                }
+
+                h1 {
+                    font-size: 1.5rem;
+                }
+
+                .button-group {
+                    flex-direction: column;
+                }
+
+                .btn {
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="message-container">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>Subscriber Updated Successfully!</h1>
+            <p class="message">The subscriber has been updated in the system. All changes have been saved.</p>
+
+            <div class="button-group">
+                <a href="/Billing-System-Web-GUI/SubscribersMainPageServlet" class="btn btn-primary" id="viewAllBtn">
+                    <i class="fas fa-ticket-alt"></i> View All Subscribers
+                </a>
+                <a href="../HTML/EditSubscriber.html" class="btn btn-secondary" id="updateAnotherBtn">
+                    Back To Edit Again
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

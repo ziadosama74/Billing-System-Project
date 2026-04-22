@@ -19,7 +19,7 @@
                     <a href="/Billing-System-Web-GUI/SubscribersMainPageServlet" class="nav-link">
                         <i class="fas fa-users"></i> Subscribers
                     </a>
-                    <a href="/Billing-System-Web-GUI/HTML/AddNewSubscriber.html" class="nav-link">
+                    <a href="/Billing-System-Web-GUI/GetAllPlanServlet" class="nav-link">ss
                         <i class="fas fa-user-plus"></i> Add New
                     </a>
                     <a href="/Billing-System-Web-GUI/HTML/dashboard.html" class="nav-link">
@@ -48,7 +48,7 @@
 
             <!-- Form Container -->
             <div class="form-container">
-                <form action="UpdateSubscriber" method="post" class="edit-form" id="editForm">
+                <form action="/Billing-System-Web-GUI/UpdateSubscriberOperationServlet" method="post" class="edit-form" id="editForm">
                     <input type="hidden" id="subscriberId" name="id">
                     
                     <div class="form-row">
@@ -59,7 +59,7 @@
                                 MSISDN
                                 <span class="required">*</span>
                             </label>
-                            <input type="tel" id="msisdn" name="msisdn" placeholder="Enter 11-digit phone number" maxlength="11">
+                            <input type="tel" id="msisdn" name="msisdn" placeholder="Enter 11-digit phone number" maxlength="11" readonly>
                             <div class="error-message" id="msisdn-error"></div>
                         </div>
 

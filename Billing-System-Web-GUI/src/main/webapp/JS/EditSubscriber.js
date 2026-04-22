@@ -144,6 +144,7 @@ function renderPlans(plans, currentPlanId) {
         if (isSelected) {
             card.classList.add("active");
             selectedPlan.value = plan.planid;
+            console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ = " + selectedPlan.value);
             foundSelected = true;
         }
 

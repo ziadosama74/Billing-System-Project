@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <title>❌ Failed | Subscriber Update Failed</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                min-height: 100vh;
+                background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Background Glow */
+            body::before {
+                content: "";
+                position: fixed;
+                width: 150%;
+                height: 150%;
+                background: radial-gradient(circle, rgba(239, 68, 68, 0.12), transparent 60%);
+                animation: moveBg 15s linear infinite;
+                z-index: -1;
+                top: -25%;
+                left: -25%;
+            }
+
+            @keyframes moveBg {
+                0%, 100% {
+                    transform: translate(0, 0);
+                }
+                50% {
+                    transform: translate(-20%, -20%);
+                }
+            }
+
+            .message-container {
+                max-width: 550px;
+                margin: 2rem;
+                padding: 2rem;
+                text-align: center;
+                animation: slideIn 0.5s ease-out;
+            }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .error-icon {
+                width: 120px;
+                height: 120px;
+                background: linear-gradient(135deg, #ef4444, #dc2626);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 2rem;
+                animation: shake 0.5s ease-out;
+                box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+            }
+
+            @keyframes shake {
+                0%, 100% {
+                    transform: translateX(0);
+                }
+                10%, 30%, 50%, 70%, 90% {
+                    transform: translateX(-5px);
+                }
+                20%, 40%, 60%, 80% {
+                    transform: translateX(5px);
+                }
+            }
+
+            .error-icon i {
+                font-size: 4rem;
+                color: white;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                background: linear-gradient(135deg, #ef4444, #f97316);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            .message {
+                color: #94a3b8;
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.6;
+            }
+
+            .error-details {
+                background: rgba(15, 23, 42, 0.6);
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+                text-align: left;
+                border: 1px solid rgba(239, 68, 68, 0.4);
+            }
+
+            .error-title {
+                color: #ef4444;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 1rem;
+                border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+                padding-bottom: 0.7rem;
+            }
+
+            .error-title i {
+                font-size: 1.1rem;
+            }
+
+            .error-list {
+                list-style: none;
+                padding-left: 0.5rem;
+            }
+
+            .error-list li {
+                padding: 0.6rem 0;
+                color: #cbd5e1;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+
+            .error-list li:last-child {
+                border-bottom: none;
+            }
+
+            .error-list li i {
+                color: #ef4444;
+                width: 20px;
+                font-size: 0.8rem;
+            }
+
+            .suggestion-box {
+                background: rgba(56, 189, 248, 0.08);
+                border-radius: 12px;
+                padding: 1rem;
+                margin-top: 1rem;
+                border-left: 3px solid #38bdf8;
+            }
+
+            .suggestion-box p {
+                font-size: 0.85rem;
+                color: #94a3b8;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .suggestion-box i {
+                color: #38bdf8;
+            }
+
+            .button-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                margin-top: 0.5rem;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                border: none;
+                border-radius: 10px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .btn-primary {
+                background: linear-gradient(135deg, #38bdf8, #a78bfa);
+                color: white;
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            }
+
+            .btn-secondary {
+                background: rgba(100, 116, 139, 0.2);
+                color: #94a3b8;
+                border: 1px solid rgba(100, 116, 139, 0.3);
+            }
+
+            .btn-secondary:hover {
+                background: rgba(100, 116, 139, 0.4);
+                transform: translateY(-2px);
+            }
+
+            .btn-danger {
+                background: linear-gradient(135deg, #ef4444, #dc2626);
+                color: white;
+            }
+
+            .btn-danger:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+            }
+
+            @media (max-width: 768px) {
+                .message-container {
+                    margin: 1rem;
+                    padding: 1rem;
+                }
+
+                .error-icon {
+                    width: 90px;
+                    height: 90px;
+                }
+
+                .error-icon i {
+                    font-size: 3rem;
+                }
+
+                h1 {
+                    font-size: 1.5rem;
+                }
+
+                .button-group {
+                    flex-direction: column;
+                }
+
+                .btn {
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="message-container">
+            <div class="error-icon">
+                <i class="fas fa-times-circle"></i>
+            </div>
+            <h1>Subscriber Update Failed!</h1>
+            <p class="message">We couldn't update the subscriber information. Please check the details and try again.</p>
+            <div class="button-group">
+                <a href="/Billing-System-Web-GUI/SubscribersMainPageServlet" class="btn btn-secondary" id="viewAllBtn">
+                    <i class="fas fa-users"></i> View All Subscribers
+                </a>
+                <a href="../HTML/EditSubscriber.html" class="btn btn-danger" id="retryBtn">
+                    <i class="fas fa-undo-alt"></i> Try Again
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -275,4 +275,70 @@ public class SubscriberClass {
         }
         return subscriber;
     }
+    // =========================================================================
+    // ============   Update Subscriber Without Plan By ID         =============
+    // =========================================================================
+    public Boolean UpdateSubscriberWithoutPlan(SubscriberClass subscriber)
+    {
+        Boolean updated = false;
+        try
+        {
+            Connection con = DB.getConnection();
+            String sql = "select * from UpdateSubscriberWithoutPlan(?,?,?,?,?,?,?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            
+            stmt.setString(1, subscriber.getMSISDN());
+            stmt.setString(2, subscriber.getName());
+            stmt.setString(3, subscriber.getInternational_ID());
+            stmt.setString(4, subscriber.getAddress());
+            stmt.setInt(5, subscriber.getPlanID());
+            stmt.setBoolean(6, subscriber.isStatus());
+            stmt.setInt(7, subscriber.getID());
+            
+            ResultSet RS = stmt.executeQuery();
+            if(RS.next())
+            {
+                updated = RS.getBoolean(1);
+            }
+            RS.close();
+            stmt.close();
+            con.close();
+        }
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+        }
+        return updated;
+    }
+    // =========================================================================
+    // ============   Update Subscriber Without Plan By ID         =============
+    // =========================================================================
+    public Boolean UpdateSubscriberWithPlanProrated(SubscriberClass subscriber)
+    {
+        Boolean updated = UpdateSubscriberWithoutPlan(subscriber);
+        try
+        {
+            Connection con = DB.getConnection();
+            String sql = "select * from change_plan_with_prorating(?,?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, subscriber.getID());
+            stmt.setInt(2, subscriber.getPlanID());
+            
+            ResultSet RS = stmt.executeQuery();
+            
+            if(RS.next())
+            {
+                updated = RS.getBoolean(1);
+            }
+            RS.close();
+            stmt.close();
+            con.close();
+        }
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+        }
+        return updated;
+    }
+    
 }
