@@ -4,6 +4,14 @@ import DB_PK.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import Invoice_PK.InvoiceClass;
+import Subscribers_PK.SubscriberClass;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Admin 
 {
@@ -81,5 +89,20 @@ public class Admin
         }
 
         return user;
+    }
+    // ===== View Parameters =====
+    public static void GetParameters() throws Exception
+    {
+        int Bills = InvoiceClass.Invoice_Get_No_OF_Bills();
+        int Subscribers = SubscriberClass.GetNumOfSubscribers();
+        double Revenue = InvoiceClass.Invoice_Get_Revenue_Monthly();
+        Map<String, Object> MAP = new HashMap<>();
+        MAP.put("Bills", Bills);
+        MAP.put("Subscribers", Subscribers);
+        MAP.put("Revenue", Revenue);
+        String home  = System.getProperty("user.home");
+        String JsonPath = home + "/Billing-System-Project/Billing-System-Web-GUI/src/main/webapp/JSON/parameters.json";
+        ObjectMapper  data = new ObjectMapper();
+        data.writeValue(new File(JsonPath), MAP);
     }
 }

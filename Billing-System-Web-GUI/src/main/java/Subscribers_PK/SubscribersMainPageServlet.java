@@ -81,7 +81,7 @@ public class SubscribersMainPageServlet extends HttpServlet {
             out.print("<td>");
             out.print(subscriber.getInternational_ID());
             out.print("</td>");
-            String planClass = subscriber.getPlan().toLowerCase();
+            String planClass = getPlanClass(subscriber.getPlan().toLowerCase());
             out.print("<td><span class=\"plan " + planClass + "\">" + subscriber.getPlan() + "</span></td>");
             out.print("<td><span class=\"status " + (subscriber.isStatus() ? "active" : "inactive") + "\">" + (subscriber.isStatus() ? "Active" : "Inactive") + "</span></td>");
             out.print("<td class=\"actions\">");

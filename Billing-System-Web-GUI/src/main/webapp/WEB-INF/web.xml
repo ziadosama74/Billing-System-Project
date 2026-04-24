@@ -52,6 +52,10 @@
         <servlet-name>OpenPlansPageServelt</servlet-name>
         <servlet-class>Plans_PK.OpenPlansPageServelt</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InvoiceGetAllServlet</servlet-name>
+        <servlet-class>Invoice_PK.InvoiceGetAllServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginRedirectServlet</servlet-name>
         <url-pattern>/LoginRedirectServlet</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>OpenPlansPageServelt</servlet-name>
         <url-pattern>/OpenPlansPageServelt</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InvoiceGetAllServlet</servlet-name>
+        <url-pattern>/InvoiceGetAllServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -23,6 +23,12 @@ public class LoginRedirectServlet extends HttpServlet {
 
         if (loggedUser != null)
         {
+            try 
+            {
+                Admin.GetParameters();
+            } catch (Exception ex) {
+                System.getLogger(LoginRedirectServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
             response.sendRedirect(contextPath + "/HTML/dashboard.html");
         }
         else

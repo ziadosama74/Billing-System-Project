@@ -20,9 +20,11 @@ public class SubscriberClass {
     private boolean Status; 
     private String Plan;
     private int PlanID;
-
+    
+    public SubscriberClass(){}
+    public SubscriberClass(int id ){this.ID = id;}
     // ==================== Setters ============================================
-    private void setID(int ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
     
@@ -340,5 +342,29 @@ public class SubscriberClass {
         }
         return updated;
     }
-    
+    // =========================================================================
+    // ============   Get The Number OF Subscribers                =============
+    // =========================================================================
+    public static int GetNumOfSubscribers()
+    {
+        int NO_OF_Subs = 0 ;
+        try
+        {
+            Connection con = DB.getConnection();
+            String sql= "select * from GetNumOfSubscribers()";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet RS = stmt.executeQuery();
+            if(RS.next())
+            {
+                NO_OF_Subs = RS.getInt(1);
+            }
+            RS.close();
+            stmt.close();
+        }
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+        }
+        return NO_OF_Subs;
+    }
 }
