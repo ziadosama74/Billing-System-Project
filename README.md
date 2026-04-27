@@ -25,7 +25,6 @@ CDRs → Rating → Usage Tracking → Billing → Invoicing
 <p align="center">
   <img width="90%" alt="Flow" src="https://github.com/user-attachments/assets/da2ac8e3-ae90-4a7a-b917-a595db69fc2e" />
 </p>
----
 
 ## 🧾 1. Subscription Plans
 
